@@ -8,17 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		4147751A24F2530C00CE9E5F /* CustomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4147751924F2530C00CE9E5F /* CustomPageViewController.swift */; };
+		4151950124F36B31008BBFAE /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4151950024F36B31008BBFAE /* DataViewController.swift */; };
 		415D725F24F24862000D7FCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415D725E24F24862000D7FCC /* AppDelegate.swift */; };
 		415D726124F24862000D7FCC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415D726024F24862000D7FCC /* SceneDelegate.swift */; };
 		415D726324F24862000D7FCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415D726224F24862000D7FCC /* ViewController.swift */; };
 		415D726624F24862000D7FCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 415D726424F24862000D7FCC /* Main.storyboard */; };
 		415D726824F24863000D7FCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 415D726724F24863000D7FCC /* Assets.xcassets */; };
 		415D726B24F24863000D7FCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 415D726924F24863000D7FCC /* LaunchScreen.storyboard */; };
-		415D727324F2516E000D7FCC /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415D727224F2516E000D7FCC /* DataViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4147751924F2530C00CE9E5F /* CustomPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageViewController.swift; sourceTree = "<group>"; };
+		4151950024F36B31008BBFAE /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		415D725B24F24862000D7FCC /* PageViewControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PageViewControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		415D725E24F24862000D7FCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		415D726024F24862000D7FCC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,7 +28,6 @@
 		415D726724F24863000D7FCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		415D726A24F24863000D7FCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		415D726C24F24863000D7FCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		415D727224F2516E000D7FCC /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +60,7 @@
 		415D725D24F24862000D7FCC /* PageViewControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				4151950024F36B31008BBFAE /* DataViewController.swift */,
 				415D725E24F24862000D7FCC /* AppDelegate.swift */,
 				415D726024F24862000D7FCC /* SceneDelegate.swift */,
 				415D726224F24862000D7FCC /* ViewController.swift */,
@@ -67,7 +68,6 @@
 				415D726724F24863000D7FCC /* Assets.xcassets */,
 				415D726924F24863000D7FCC /* LaunchScreen.storyboard */,
 				415D726C24F24863000D7FCC /* Info.plist */,
-				415D727224F2516E000D7FCC /* DataViewController.swift */,
 				4147751924F2530C00CE9E5F /* CustomPageViewController.swift */,
 			);
 			path = PageViewControllerDemo;
@@ -144,10 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				415D727324F2516E000D7FCC /* DataViewController.swift in Sources */,
 				415D726324F24862000D7FCC /* ViewController.swift in Sources */,
 				415D725F24F24862000D7FCC /* AppDelegate.swift in Sources */,
 				4147751A24F2530C00CE9E5F /* CustomPageViewController.swift in Sources */,
+				4151950124F36B31008BBFAE /* DataViewController.swift in Sources */,
 				415D726124F24862000D7FCC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

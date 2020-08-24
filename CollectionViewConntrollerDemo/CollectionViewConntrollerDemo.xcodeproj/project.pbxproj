@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		413B043824F3A45800B2B2C9 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413B043724F3A45800B2B2C9 /* CollectionViewCell.swift */; };
 		4151950F24F36E33008BBFAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4151950E24F36E33008BBFAE /* AppDelegate.swift */; };
 		4151951124F36E33008BBFAE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4151951024F36E33008BBFAE /* SceneDelegate.swift */; };
 		4151951624F36E33008BBFAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4151951424F36E33008BBFAE /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		413B043724F3A45800B2B2C9 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		4151950B24F36E33008BBFAE /* CollectionViewConntrollerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewConntrollerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4151950E24F36E33008BBFAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4151951024F36E33008BBFAE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				4151951F24F36E34008BBFAE /* Info.plist */,
 				4151951724F36E33008BBFAE /* CollectionViewConntrollerDemo.xcdatamodeld */,
 				4151952524F36F4E008BBFAE /* CollectionViewController.swift */,
+				413B043724F3A45800B2B2C9 /* CollectionViewCell.swift */,
 			);
 			path = CollectionViewConntrollerDemo;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				413B043824F3A45800B2B2C9 /* CollectionViewCell.swift in Sources */,
 				4151952624F36F4E008BBFAE /* CollectionViewController.swift in Sources */,
 				4151951924F36E33008BBFAE /* CollectionViewConntrollerDemo.xcdatamodeld in Sources */,
 				4151950F24F36E33008BBFAE /* AppDelegate.swift in Sources */,

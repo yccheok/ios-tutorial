@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class DarkThemeManager : ThemeManager {
+struct DarkThemeManager : ThemeManager {
     static let INSTANCE = DarkThemeManager()
     
     static let colors = [

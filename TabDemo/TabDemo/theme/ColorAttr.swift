@@ -8,6 +8,14 @@
 
 import Foundation
 
-enum ColorAttribute {
-    case red
+enum ColorAttr {
+    case blueTabColor
+    case greenTabColor
+    case redTabColor
+    case orangeTabColor
+    case purpleTabColor
+    case yellowTabColor
+    case cyanTabColor
+    case greyTabColor
+    case normalTabColor
 }

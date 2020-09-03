@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		947691F125010847009E0A8D /* LightThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947691F025010847009E0A8D /* LightThemeManager.swift */; };
+		947691F4250109D6009E0A8D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947691F3250109D6009E0A8D /* Utils.swift */; };
+		947691F625010A0A009E0A8D /* Utils+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947691F525010A0A009E0A8D /* Utils+UI.swift */; };
+		947691F825010E08009E0A8D /* DarkThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947691F725010E08009E0A8D /* DarkThemeManager.swift */; };
+		947691FA25010FBB009E0A8D /* Utils+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947691F925010FBB009E0A8D /* Utils+Theme.swift */; };
 		94E9B8962500F40500B0D0FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8952500F40500B0D0FC /* AppDelegate.swift */; };
 		94E9B8982500F40500B0D0FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8972500F40500B0D0FC /* SceneDelegate.swift */; };
 		94E9B89A2500F40500B0D0FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8992500F40500B0D0FC /* ViewController.swift */; };
@@ -15,6 +20,8 @@
 		94E9B8A22500F40700B0D0FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94E9B8A02500F40700B0D0FC /* LaunchScreen.storyboard */; };
 		94E9B8AD2500F40700B0D0FC /* TabDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8AC2500F40700B0D0FC /* TabDemoTests.swift */; };
 		94E9B8B82500F40700B0D0FC /* TabDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8B72500F40700B0D0FC /* TabDemoUITests.swift */; };
+		94E9B8C72500FA2100B0D0FC /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8C62500FA2100B0D0FC /* ThemeManager.swift */; };
+		94E9B8C92501004900B0D0FC /* ColorAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8C82501004900B0D0FC /* ColorAttr.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +42,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		947691F025010847009E0A8D /* LightThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightThemeManager.swift; sourceTree = "<group>"; };
+		947691F3250109D6009E0A8D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		947691F525010A0A009E0A8D /* Utils+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utils+UI.swift"; sourceTree = "<group>"; };
+		947691F725010E08009E0A8D /* DarkThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkThemeManager.swift; sourceTree = "<group>"; };
+		947691F925010FBB009E0A8D /* Utils+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utils+Theme.swift"; sourceTree = "<group>"; };
 		94E9B8922500F40500B0D0FC /* TabDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E9B8952500F40500B0D0FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94E9B8972500F40500B0D0FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +61,8 @@
 		94E9B8B32500F40700B0D0FC /* TabDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TabDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E9B8B72500F40700B0D0FC /* TabDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabDemoUITests.swift; sourceTree = "<group>"; };
 		94E9B8B92500F40700B0D0FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94E9B8C62500FA2100B0D0FC /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		94E9B8C82501004900B0D0FC /* ColorAttr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAttr.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		947691F2250109B7009E0A8D /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				947691F525010A0A009E0A8D /* Utils+UI.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
 		94E9B8892500F40500B0D0FC = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +121,8 @@
 		94E9B8942500F40500B0D0FC /* TabDemo */ = {
 			isa = PBXGroup;
 			children = (
+				947691F2250109B7009E0A8D /* ui */,
+				94E9B8C52500F96D00B0D0FC /* theme */,
 				94E9B8952500F40500B0D0FC /* AppDelegate.swift */,
 				94E9B8972500F40500B0D0FC /* SceneDelegate.swift */,
 				94E9B8992500F40500B0D0FC /* ViewController.swift */,
@@ -106,6 +130,7 @@
 				94E9B89E2500F40700B0D0FC /* Assets.xcassets */,
 				94E9B8A02500F40700B0D0FC /* LaunchScreen.storyboard */,
 				94E9B8A32500F40700B0D0FC /* Info.plist */,
+				947691F3250109D6009E0A8D /* Utils.swift */,
 			);
 			path = TabDemo;
 			sourceTree = "<group>";
@@ -126,6 +151,18 @@
 				94E9B8B92500F40700B0D0FC /* Info.plist */,
 			);
 			path = TabDemoUITests;
+			sourceTree = "<group>";
+		};
+		94E9B8C52500F96D00B0D0FC /* theme */ = {
+			isa = PBXGroup;
+			children = (
+				94E9B8C62500FA2100B0D0FC /* ThemeManager.swift */,
+				94E9B8C82501004900B0D0FC /* ColorAttr.swift */,
+				947691F025010847009E0A8D /* LightThemeManager.swift */,
+				947691F725010E08009E0A8D /* DarkThemeManager.swift */,
+				947691F925010FBB009E0A8D /* Utils+Theme.swift */,
+			);
+			path = theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +298,14 @@
 			files = (
 				94E9B89A2500F40500B0D0FC /* ViewController.swift in Sources */,
 				94E9B8962500F40500B0D0FC /* AppDelegate.swift in Sources */,
+				947691F125010847009E0A8D /* LightThemeManager.swift in Sources */,
+				947691FA25010FBB009E0A8D /* Utils+Theme.swift in Sources */,
+				947691F625010A0A009E0A8D /* Utils+UI.swift in Sources */,
+				947691F4250109D6009E0A8D /* Utils.swift in Sources */,
+				94E9B8C92501004900B0D0FC /* ColorAttr.swift in Sources */,
 				94E9B8982500F40500B0D0FC /* SceneDelegate.swift in Sources */,
+				947691F825010E08009E0A8D /* DarkThemeManager.swift in Sources */,
+				94E9B8C72500FA2100B0D0FC /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

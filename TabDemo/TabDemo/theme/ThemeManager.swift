@@ -7,3 +7,9 @@
 //
 
 import Foundation
+import UIKit
+
+protocol ThemeManager {
+    func getColor(_ colorAttr : ColorAttr) -> UIColor
+}
+

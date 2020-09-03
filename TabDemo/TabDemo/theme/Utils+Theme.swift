@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+extension Utils {
+    static func getThemeManager() -> ThemeManager {
+        // TODO:
+        return LightThemeManager.INSTANCE
+    }
+}

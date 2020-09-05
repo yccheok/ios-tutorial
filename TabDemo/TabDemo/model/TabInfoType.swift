@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+enum TabInfoType {
+    case All
+    case Calendar
+    case Custom
+    case Settings
+}

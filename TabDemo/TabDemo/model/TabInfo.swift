@@ -7,3 +7,25 @@
 //
 
 import Foundation
+import UIKit
+
+struct TabInfo {
+    private static let colorAttrs = [
+        ColorAttr.blueTabColor,
+        ColorAttr.greenTabColor,
+        ColorAttr.redTabColor,
+        ColorAttr.orangeTabColor,
+        ColorAttr.purpleTabColor,
+        ColorAttr.yellowTabColor,
+        ColorAttr.cyanTabColor,
+        ColorAttr.greyTabColor,
+    ];
+    
+    let type: TabInfoType
+    var name: String?
+    var colorIndex: Int
+    
+    func getColor() -> UIColor {
+        return Utils.getThemeManager().getColor(TabInfo.colorAttrs[colorIndex])
+    }
+}

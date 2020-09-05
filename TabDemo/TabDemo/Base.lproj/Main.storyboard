@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,40 +21,58 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="owh-ZN-aPN"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IyE-Gi-KD5">
-                                    <size key="itemSize" width="290" height="194"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tqc-3x-FFO">
+                                    <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qwI-iM-lCU">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TabCollectionViewCell" id="qwI-iM-lCU" customClass="TabCollectionViewCell" customModule="TabDemo" customModuleProvider="target">
                                         <rect key="frame" x="62" y="0.0" width="290" height="194"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6Kg-ss-xqj">
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="290" height="194"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heV-OU-pcC">
-                                                    <rect key="frame" x="0.0" y="86.5" width="290" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-3B-sgg">
-                                                    <rect key="frame" x="0.0" y="87" width="290" height="20.5"/>
-                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SyI-kE-O9J">
+                                                    <rect key="frame" x="0.0" y="0.0" width="290" height="194"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heV-OU-pcC">
+                                                            <rect key="frame" x="8" y="86.5" width="274" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TWt-3B-sgg">
+                                                            <rect key="frame" x="0.0" y="87" width="290" height="20.5"/>
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="heV-OU-pcC" firstAttribute="centerY" secondItem="SyI-kE-O9J" secondAttribute="centerY" id="5Ym-OO-Wsj"/>
+                                                        <constraint firstItem="TWt-3B-sgg" firstAttribute="leading" secondItem="SyI-kE-O9J" secondAttribute="leading" id="GNR-dH-oit"/>
+                                                        <constraint firstAttribute="trailing" secondItem="heV-OU-pcC" secondAttribute="trailing" constant="8" id="dIg-vq-cux"/>
+                                                        <constraint firstItem="heV-OU-pcC" firstAttribute="leading" secondItem="SyI-kE-O9J" secondAttribute="leading" constant="8" id="lhG-e9-PlW"/>
+                                                        <constraint firstItem="TWt-3B-sgg" firstAttribute="centerY" secondItem="SyI-kE-O9J" secondAttribute="centerY" id="ntU-tw-7cj"/>
+                                                        <constraint firstAttribute="trailing" secondItem="TWt-3B-sgg" secondAttribute="trailing" id="w4s-5S-6rh"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="w6J-ir-l39"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="heV-OU-pcC" firstAttribute="centerY" secondItem="6Kg-ss-xqj" secondAttribute="centerY" id="3nv-TD-YdF"/>
-                                                <constraint firstAttribute="trailing" secondItem="heV-OU-pcC" secondAttribute="trailing" id="E6E-K4-OeJ"/>
-                                                <constraint firstItem="TWt-3B-sgg" firstAttribute="leading" secondItem="6Kg-ss-xqj" secondAttribute="leading" id="MmD-Mk-jvP"/>
-                                                <constraint firstItem="TWt-3B-sgg" firstAttribute="centerY" secondItem="6Kg-ss-xqj" secondAttribute="centerY" id="Urx-ku-5c1"/>
-                                                <constraint firstItem="heV-OU-pcC" firstAttribute="leading" secondItem="6Kg-ss-xqj" secondAttribute="leading" id="nsP-Oa-SCf"/>
-                                                <constraint firstAttribute="trailing" secondItem="TWt-3B-sgg" secondAttribute="trailing" id="r4d-Xh-vhT"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="SyI-kE-O9J" firstAttribute="top" secondItem="qwI-iM-lCU" secondAttribute="top" id="BzU-Hs-AEI"/>
+                                            <constraint firstItem="SyI-kE-O9J" firstAttribute="leading" secondItem="qwI-iM-lCU" secondAttribute="leading" id="G8T-Ls-kBM"/>
+                                            <constraint firstAttribute="bottom" secondItem="SyI-kE-O9J" secondAttribute="bottom" id="ZNH-bu-ffD"/>
+                                            <constraint firstAttribute="trailing" secondItem="SyI-kE-O9J" secondAttribute="trailing" id="v9x-3O-ODI"/>
+                                        </constraints>
                                         <size key="customSize" width="290" height="194"/>
+                                        <connections>
+                                            <outlet property="gearImageView" destination="TWt-3B-sgg" id="cbi-nx-Uuq"/>
+                                            <outlet property="label" destination="heV-OU-pcC" id="sQa-wf-fsd"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -78,10 +95,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="tabCollectionView" destination="ZvU-0G-02O" id="IBo-IL-18n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="117.85714285714285"/>
+            <point key="canvasLocation" x="-2691" y="-2454"/>
         </scene>
     </scenes>
     <resources>

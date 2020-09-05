@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,7 +32,7 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TabCollectionViewCell" id="qwI-iM-lCU" customClass="TabCollectionViewCell" customModule="TabDemo" customModuleProvider="target">
                                         <rect key="frame" x="62" y="0.0" width="290" height="194"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Us2-Mk-Qo7">
                                             <rect key="frame" x="0.0" y="0.0" width="290" height="194"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -61,13 +62,13 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="SyI-kE-O9J" firstAttribute="top" secondItem="qwI-iM-lCU" secondAttribute="top" id="BzU-Hs-AEI"/>
-                                            <constraint firstItem="SyI-kE-O9J" firstAttribute="leading" secondItem="qwI-iM-lCU" secondAttribute="leading" id="G8T-Ls-kBM"/>
-                                            <constraint firstAttribute="bottom" secondItem="SyI-kE-O9J" secondAttribute="bottom" id="ZNH-bu-ffD"/>
-                                            <constraint firstAttribute="trailing" secondItem="SyI-kE-O9J" secondAttribute="trailing" id="v9x-3O-ODI"/>
-                                        </constraints>
+                                            <constraints>
+                                                <constraint firstItem="SyI-kE-O9J" firstAttribute="top" secondItem="Us2-Mk-Qo7" secondAttribute="top" id="BzU-Hs-AEI"/>
+                                                <constraint firstItem="SyI-kE-O9J" firstAttribute="leading" secondItem="Us2-Mk-Qo7" secondAttribute="leading" id="G8T-Ls-kBM"/>
+                                                <constraint firstAttribute="bottom" secondItem="SyI-kE-O9J" secondAttribute="bottom" id="ZNH-bu-ffD"/>
+                                                <constraint firstAttribute="trailing" secondItem="SyI-kE-O9J" secondAttribute="trailing" id="v9x-3O-ODI"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
                                         <size key="customSize" width="290" height="194"/>
                                         <connections>
                                             <outlet property="gearImageView" destination="TWt-3B-sgg" id="cbi-nx-Uuq"/>

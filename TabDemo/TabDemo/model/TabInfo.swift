@@ -25,7 +25,11 @@ struct TabInfo {
     var name: String?
     var colorIndex: Int
     
-    func getColor() -> UIColor {
+    func getColor() -> Int {
         return Utils.getThemeManager().getColor(TabInfo.colorAttrs[colorIndex])
+    }
+    
+    func getUIColor() -> UIColor {
+        return Utils.getThemeManager().getUIColor(TabInfo.colorAttrs[colorIndex])
     }
 }

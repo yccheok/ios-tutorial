@@ -23,6 +23,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var x = UIColor.red.cgColor.numberOfComponents
+        print("red CGColorGetNumberOfComponents -> \(x)")
+        x = UIColor.white.cgColor.numberOfComponents
+        print("white CGColorGetNumberOfComponents -> \(x)")
+        
         tabCollectionView.collectionViewLayout = layoutConfig()
         tabCollectionView.delegate = self
         tabCollectionView.dataSource = self

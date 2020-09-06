@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 protocol ThemeManager {
-    func getColor(_ colorAttr : ColorAttr) -> UIColor
+    func getColor(_ colorAttr : ColorAttr) -> Int
+    func getUIColor(_ colorAttr : ColorAttr) -> UIColor
 }
 

@@ -26,7 +26,7 @@ class TabCollectionViewCell: UICollectionViewCell {
     }
     
     func update(_ tabInfo: TabInfo) {
-        backgroundColor = tabInfo.getColor()
+        self.backgroundColor = tabInfo.getUIColor()
         
         // TODO: String localization.
         let type = tabInfo.type

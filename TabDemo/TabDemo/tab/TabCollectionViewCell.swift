@@ -27,6 +27,8 @@ class TabCollectionViewCell: UICollectionViewCell {
     
     func update(_ tabInfo: TabInfo) {
         self.backgroundColor = tabInfo.getUIColor()
+        // TODO: Optimization required. We want to avoid from invoking constructor each time.
+        label.textColor = UIColor(argb: Utils.getOptimizedPrimaryTextColor(tabInfo.getColor()))
         
         // TODO: String localization.
         let type = tabInfo.type

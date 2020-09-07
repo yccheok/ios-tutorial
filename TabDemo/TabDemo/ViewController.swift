@@ -12,7 +12,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var tabCollectionView: UICollectionView!
     @IBOutlet weak var tabBottomView: UIView!
     
-    var selectedTabIndex: Int = 0
+    private var selectedTabIndex: Int = 0
+    
+    private var pageViewController: UIPageViewController!
     
     // TODO: String localization.
     private let tabInfos = [
@@ -33,6 +35,16 @@ class ViewController: UIViewController {
         updateTabBottomView()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.destination {
+        case let pageController as UIPageViewController:
+            self.pageViewController = pageController
+            
+        default:
+            break
+        }
+    }
+    
     private func updateTabBottomView() {
         self.tabBottomView.backgroundColor = tabInfos[selectedTabIndex].getUIColor()
     }

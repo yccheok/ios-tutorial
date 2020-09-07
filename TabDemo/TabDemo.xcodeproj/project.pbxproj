@@ -14,6 +14,7 @@
 		947691F4250109D6009E0A8D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947691F3250109D6009E0A8D /* Utils.swift */; };
 		947691F825010E08009E0A8D /* DarkThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947691F725010E08009E0A8D /* DarkThemeManager.swift */; };
 		947691FA25010FBB009E0A8D /* Utils+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947691F925010FBB009E0A8D /* Utils+Theme.swift */; };
+		947785572505F87300CF8A0C /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947785562505F87300CF8A0C /* PageViewController.swift */; };
 		948E8D522503A49B00E6A910 /* TabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948E8D502503A49B00E6A910 /* TabCollectionViewCell.swift */; };
 		948E8D562503ABA000E6A910 /* TabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948E8D552503ABA000E6A910 /* TabInfo.swift */; };
 		948E8D582503AD6800E6A910 /* TabInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948E8D572503AD6800E6A910 /* TabInfoType.swift */; };
@@ -54,6 +55,7 @@
 		947691F3250109D6009E0A8D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		947691F725010E08009E0A8D /* DarkThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkThemeManager.swift; sourceTree = "<group>"; };
 		947691F925010FBB009E0A8D /* Utils+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utils+Theme.swift"; sourceTree = "<group>"; };
+		947785562505F87300CF8A0C /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		948E8D502503A49B00E6A910 /* TabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCollectionViewCell.swift; sourceTree = "<group>"; };
 		948E8D552503ABA000E6A910 /* TabInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfo.swift; sourceTree = "<group>"; };
 		948E8D572503AD6800E6A910 /* TabInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfoType.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				94E9B8A02500F40700B0D0FC /* LaunchScreen.storyboard */,
 				94E9B8A32500F40700B0D0FC /* Info.plist */,
 				947691F3250109D6009E0A8D /* Utils.swift */,
+				947785562505F87300CF8A0C /* PageViewController.swift */,
 			);
 			path = TabDemo;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				94E9B8982500F40500B0D0FC /* SceneDelegate.swift in Sources */,
 				947691F825010E08009E0A8D /* DarkThemeManager.swift in Sources */,
 				94E9B8C72500FA2100B0D0FC /* ThemeManager.swift in Sources */,
+				947785572505F87300CF8A0C /* PageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

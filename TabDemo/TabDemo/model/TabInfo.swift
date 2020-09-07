@@ -26,10 +26,22 @@ struct TabInfo {
     var colorIndex: Int
     
     func getColor() -> Int {
-        return Utils.getThemeManager().getColor(TabInfo.colorAttrs[colorIndex])
+        // TODO: Remove modulus in production.
+        return Utils.getThemeManager().getColor(TabInfo.colorAttrs[colorIndex % TabInfo.colorAttrs.count])
     }
     
     func getUIColor() -> UIColor {
-        return Utils.getThemeManager().getUIColor(TabInfo.colorAttrs[colorIndex])
+        // TODO: Remove modulus in production.
+        return Utils.getThemeManager().getUIColor(TabInfo.colorAttrs[colorIndex % TabInfo.colorAttrs.count])
+    }
+}
+
+extension TabInfo: Equatable {
+    static func == (lhs: TabInfo, rhs: TabInfo) -> Bool {
+        return
+            lhs.type == rhs.type &&
+            lhs.name == rhs.name &&
+            lhs.colorIndex == rhs.colorIndex
+        
     }
 }

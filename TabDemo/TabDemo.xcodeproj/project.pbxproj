@@ -15,6 +15,8 @@
 		947691F825010E08009E0A8D /* DarkThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947691F725010E08009E0A8D /* DarkThemeManager.swift */; };
 		947691FA25010FBB009E0A8D /* Utils+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947691F925010FBB009E0A8D /* Utils+Theme.swift */; };
 		947785572505F87300CF8A0C /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947785562505F87300CF8A0C /* PageViewController.swift */; };
+		9477855C2506078F00CF8A0C /* PageIndexable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9477855B2506078F00CF8A0C /* PageIndexable.swift */; };
+		9477855E25060ECE00CF8A0C /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9477855D25060ECE00CF8A0C /* DashboardController.swift */; };
 		948E8D522503A49B00E6A910 /* TabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948E8D502503A49B00E6A910 /* TabCollectionViewCell.swift */; };
 		948E8D562503ABA000E6A910 /* TabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948E8D552503ABA000E6A910 /* TabInfo.swift */; };
 		948E8D582503AD6800E6A910 /* TabInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948E8D572503AD6800E6A910 /* TabInfoType.swift */; };
@@ -56,6 +58,8 @@
 		947691F725010E08009E0A8D /* DarkThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkThemeManager.swift; sourceTree = "<group>"; };
 		947691F925010FBB009E0A8D /* Utils+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utils+Theme.swift"; sourceTree = "<group>"; };
 		947785562505F87300CF8A0C /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		9477855B2506078F00CF8A0C /* PageIndexable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndexable.swift; sourceTree = "<group>"; };
+		9477855D25060ECE00CF8A0C /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		948E8D502503A49B00E6A910 /* TabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCollectionViewCell.swift; sourceTree = "<group>"; };
 		948E8D552503ABA000E6A910 /* TabInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfo.swift; sourceTree = "<group>"; };
 		948E8D572503AD6800E6A910 /* TabInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfoType.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				948E8D502503A49B00E6A910 /* TabCollectionViewCell.swift */,
+				9477855B2506078F00CF8A0C /* PageIndexable.swift */,
 			);
 			path = tab;
 			sourceTree = "<group>";
@@ -125,6 +130,14 @@
 				944E6C792505142100FE68A1 /* Utils+UI.swift */,
 			);
 			path = ui;
+			sourceTree = "<group>";
+		};
+		947785582505FAD000CF8A0C /* note */ = {
+			isa = PBXGroup;
+			children = (
+				9477855D25060ECE00CF8A0C /* DashboardController.swift */,
+			);
+			path = note;
 			sourceTree = "<group>";
 		};
 		948E8D542503AB9000E6A910 /* model */ = {
@@ -159,6 +172,7 @@
 		94E9B8942500F40500B0D0FC /* TabDemo */ = {
 			isa = PBXGroup;
 			children = (
+				947785582505FAD000CF8A0C /* note */,
 				944E6C76250511FB00FE68A1 /* ui */,
 				944E6C732504FFFD00FE68A1 /* extension */,
 				948E8D542503AB9000E6A910 /* model */,
@@ -341,6 +355,8 @@
 				94E9B89A2500F40500B0D0FC /* ViewController.swift in Sources */,
 				94E9B8962500F40500B0D0FC /* AppDelegate.swift in Sources */,
 				947691F125010847009E0A8D /* LightThemeManager.swift in Sources */,
+				9477855C2506078F00CF8A0C /* PageIndexable.swift in Sources */,
+				9477855E25060ECE00CF8A0C /* DashboardController.swift in Sources */,
 				948E8D562503ABA000E6A910 /* TabInfo.swift in Sources */,
 				947691FA25010FBB009E0A8D /* Utils+Theme.swift in Sources */,
 				948E8D522503A49B00E6A910 /* TabCollectionViewCell.swift in Sources */,

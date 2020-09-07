@@ -8,15 +8,17 @@
 
 import UIKit
 
-class DashboardController: UIViewController {
-
+class DashboardController: UIViewController, PageIndexable {
+    @IBOutlet weak var label: UILabel!
+    
+    var pageIndex = -1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        label.text = "\(pageIndex) : Label : \(pageIndex)"
     }
     
-
     /*
     // MARK: - Navigation
 

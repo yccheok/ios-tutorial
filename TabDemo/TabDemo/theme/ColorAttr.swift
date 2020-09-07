@@ -18,4 +18,6 @@ enum ColorAttr {
     case cyanTabColor
     case greyTabColor
     case normalTabColor
+    case tabTextColor
+    case tabIconColor
 }

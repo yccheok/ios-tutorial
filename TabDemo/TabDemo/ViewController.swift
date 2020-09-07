@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var tabCollectionView: UICollectionView!
     
+    var selectedTabIndex: Int = 0
+    
     // TODO: String localization.
     private let tabInfos = [
         TabInfo(type: .All, name: nil, colorIndex: 0),
@@ -22,11 +24,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var x = UIColor.red.cgColor.numberOfComponents
-        print("red CGColorGetNumberOfComponents -> \(x)")
-        x = UIColor.white.cgColor.numberOfComponents
-        print("white CGColorGetNumberOfComponents -> \(x)")
         
         tabCollectionView.collectionViewLayout = layoutConfig()
         tabCollectionView.delegate = self
@@ -55,11 +52,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         if let tabCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: className, for: indexPath) as? TabCollectionViewCell {
             let tabInfo = tabInfos[indexPath.row]
-            tabCollectionViewCell.update(tabInfo)
+            let selected = indexPath.row == self.selectedTabIndex
+            tabCollectionViewCell.update(tabInfo, selected)
             return tabCollectionViewCell
         }
         
         return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedTabIndex = indexPath.row
+        
+        self.tabCollectionView.reloadData()
     }
 }
 

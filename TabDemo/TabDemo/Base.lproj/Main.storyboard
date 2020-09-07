@@ -118,10 +118,40 @@
         <!--Page View Controller-->
         <scene sceneID="JoB-1V-sq5">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="kLb-nc-PcT" customClass="PageViewController" customModule="TabDemo" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="kLb-nc-PcT" customClass="PageViewController" customModule="TabDemo" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ipu-Wt-qvh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1929" y="-2454"/>
+        </scene>
+        <!--Dashboard Controller-->
+        <scene sceneID="yns-DJ-sBm">
+            <objects>
+                <viewController storyboardIdentifier="DashboardController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hHN-dp-Q75" customClass="DashboardController" customModule="TabDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="U79-MN-HRe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIw-Gx-fxB">
+                                <rect key="frame" x="124" y="405" width="166" height="86"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="72"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WIw-Gx-fxB" firstAttribute="centerY" secondItem="U79-MN-HRe" secondAttribute="centerY" id="9nR-Ez-ajh"/>
+                            <constraint firstItem="WIw-Gx-fxB" firstAttribute="centerX" secondItem="U79-MN-HRe" secondAttribute="centerX" id="DYM-Tc-rRt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5TZ-xM-Ney"/>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="WIw-Gx-fxB" id="FGb-l7-OHF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SAt-O9-2Om" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1257" y="-2413"/>
         </scene>
     </scenes>
     <resources>

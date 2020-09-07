@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var tabCollectionView: UICollectionView!
+    @IBOutlet weak var tabBottomView: UIView!
     
     var selectedTabIndex: Int = 0
     
@@ -28,9 +29,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         tabCollectionView.collectionViewLayout = layoutConfig()
         tabCollectionView.delegate = self
         tabCollectionView.dataSource = self
+        
+        updateTabBottomView()
     }
 
-    func layoutConfig() -> UICollectionViewCompositionalLayout {
+    private func updateTabBottomView() {
+        self.tabBottomView.backgroundColor = tabInfos[selectedTabIndex].getUIColor()
+    }
+    
+    private func layoutConfig() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
             let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(44), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -64,6 +71,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.selectedTabIndex = indexPath.row
         
         self.tabCollectionView.reloadData()
+        
+        updateTabBottomView()
     }
 }
 

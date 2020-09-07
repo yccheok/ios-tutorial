@@ -78,10 +78,10 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCp-wU-eRl">
-                                <rect key="frame" x="0.0" y="88" width="414" height="1"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="4"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="ahd-2t-hbh"/>
+                                    <constraint firstAttribute="height" constant="4" id="ahd-2t-hbh"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -97,6 +97,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="tabBottomView" destination="uCp-wU-eRl" id="hYl-jG-l9h"/>
                         <outlet property="tabCollectionView" destination="ZvU-0G-02O" id="IBo-IL-18n"/>
                     </connections>
                 </viewController>

@@ -11,7 +11,7 @@ struct Color {
     }
     
     // TODO: Use Apple's system color
-    static let primaryTextColorLight = 0xde000000
+    static let primaryTextColorLight = 0xff000000
     static let primaryTextColorDark = 0xffffffff
     
     static let blueTabColorLight = 0xff5481e6
@@ -21,7 +21,8 @@ struct Color {
     static let purpleTabColorLight = 0xff913ccd
     static let yellowTabColorLight = 0xfffdd835
     static let cyanTabColorLight = 0xff2ca8c2
-    static let greyTabColorLight = 0xff757575
+    //static let greyTabColorLight = 0xff757575
+    static let greyTabColorLight = 0xff424242
     //static let normalTabColorLight = 0xff997950
     static let normalTabColorLight = 0xff757575
     static let tabTextColorLight = 0xb3ffffff

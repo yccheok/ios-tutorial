@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ViewController: UIViewController {
     @IBOutlet weak var tabCollectionView: UICollectionView!
     @IBOutlet weak var tabBottomView: UIView!
     
@@ -49,7 +49,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             return section
         }
     }
-    
+}
+
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tabInfos.count
     }

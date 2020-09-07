@@ -114,6 +114,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         self.tabCollectionView.reloadData()
         // TODO: reloadData will reset the scroll position. How can we restore previous scroll position?
+        // The reason we're calling reloadData, as we want to unhighlight old tab, and highlight new tab.
+        // In the future, we need to support add/remove/move tab.
         
         updateTabBottomView()
             

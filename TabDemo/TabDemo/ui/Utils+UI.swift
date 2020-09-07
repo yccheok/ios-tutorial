@@ -9,18 +9,33 @@
 import Foundation
 
 extension Utils {
+    private static let OPTIMIZED_PRIMARY_TEXT_COLORS = [
+        Color.blueTabColorLight : Color.primaryTextColorDark,
+        Color.greenTabColorLight : Color.primaryTextColorDark,
+        Color.redTabColorLight : Color.primaryTextColorDark,
+        Color.orangeTabColorLight : Color.primaryTextColorLight,
+        Color.purpleTabColorLight : Color.primaryTextColorDark,
+        Color.yellowTabColorLight : Color.primaryTextColorLight,
+        Color.cyanTabColorLight : Color.primaryTextColorDark,
+        Color.greyTabColorLight : Color.primaryTextColorDark
+    ]
+    
     private static func toHexString(argb: Int) -> String {
         return NSString(format:"#%08x", argb) as String
     }
     
     public static func getOptimizedPrimaryTextColor(_ backgroundColor: Int) -> Int {
-        // TODO: Build a quick lookup!
-
-        return getContrastForegroundColor(
-            Color.primaryTextColorLight,
-            Color.primaryTextColorDark,
-            backgroundColor
-        );
+        let _optimizedPrimaryTextColor = OPTIMIZED_PRIMARY_TEXT_COLORS[backgroundColor]
+        
+        if let optimizedPrimaryTextColor = _optimizedPrimaryTextColor {
+            return optimizedPrimaryTextColor
+        } else {
+            return getContrastForegroundColor(
+                Color.primaryTextColorLight,
+                Color.primaryTextColorDark,
+                backgroundColor
+            );
+        }
     }
     
     public static func getContrastForegroundColor(_ foregroundColor0: Int, _ foregroundColor1: Int, _ backgroundColor: Int) -> Int{

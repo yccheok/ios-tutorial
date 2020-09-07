@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+protocol PageIndexable {
+    var pageIndex: Int { get set }
+}

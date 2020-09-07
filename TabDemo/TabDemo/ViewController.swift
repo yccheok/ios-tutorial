@@ -38,23 +38,16 @@ class ViewController: UIViewController {
         tabCollectionView.dataSource = self
         
         pageViewController.delegate = self
-        pageViewController.dataSource = self  
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
+        pageViewController.dataSource = self
+        
         // TODO: Testing only.
         selectTab(8)
     }
 
-    // This function is called, when you swipe the page left/right
     private func selectTab(_ index: Int) {
         let indexPath = IndexPath(item: index, section: 0)
         self.collectionView(self.tabCollectionView, didSelectItemAt: indexPath)
         
-        // TODO: How we can achieve a smoother (with animation) user experience? Please note, if you use "animated: false" in tabCollectionView.selectItem,
-        // you will get a weird effect...
         DispatchQueue.main.async {
             self.tabCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
             self.tabCollectionView.scrollToItem(at: IndexPath.init(item: self.selectedTabIndex, section: 0), at: .centeredHorizontally, animated: true)
@@ -107,15 +100,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         return UICollectionViewCell()
     }
     
-    // This function will be called either you tap on tab, or you swipe the page left/right.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let oldSelectedTabIndex = self.selectedTabIndex
         self.selectedTabIndex = indexPath.row
-        
-        self.tabCollectionView.reloadData()
-        // TODO: reloadData will reset the scroll position. How can we restore previous scroll position?
-        // The reason we're calling reloadData, as we want to unhighlight old tab, and highlight new tab.
-        // In the future, we need to support add/remove/move tab.
         
         updateTabBottomView()
             
@@ -129,13 +116,16 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
                 if let pageIndexable = viewControllers[0] as? PageIndexable {
                     if pageIndexable.pageIndex != self.selectedTabIndex {
                         self.pageViewController.setViewControllers([viewController(At: self.selectedTabIndex)!], direction: direction, animated: true, completion: nil)
+                        self.tabCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
                     }
                 }
             } else {
                 self.pageViewController.setViewControllers([viewController(At: self.selectedTabIndex)!], direction: direction, animated: true, completion: nil)
+                self.tabCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             }
         } else {
             self.pageViewController.setViewControllers([viewController(At: self.selectedTabIndex)!], direction: direction, animated: true, completion: nil)
+            self.tabCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
 }
@@ -185,7 +175,13 @@ extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDe
         if finished {
             if completed {
                 let pageIndexable = pageViewController.viewControllers!.first as! PageIndexable
-                selectTab(pageIndexable.pageIndex)
+                let pageIndex = pageIndexable.pageIndex
+                
+                tabCollectionView.selectItem(at: IndexPath.init(item: pageIndex, section: 0), animated: false, scrollPosition: .centeredVertically)
+                tabCollectionView.scrollToItem(at: IndexPath.init(item: pageIndex, section: 0), at: .centeredHorizontally, animated: true)
+                
+                self.selectedTabIndex = pageIndex
+                updateTabBottomView()
             }
         }
         

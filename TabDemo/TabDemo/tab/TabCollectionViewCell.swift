@@ -13,36 +13,48 @@ class TabCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var gearImageView: UIImageView!
     
+    private var tabInfo: TabInfo?
+    
+    override var isSelected: Bool {
+        didSet {
+            guard let tabInfo = self.tabInfo else {
+                return
+            }
+
+            // Cell highlight will be performed here. The reason is that, if we rely on self.update solely, we need to
+            // perform collectionView.reloadData in collectionView(didSelectItemAt) in order to highlight cell during
+            // Tab selection. However, we will fight it very difficult to handling scrolling issue.
+            // collectionView.reloadData will always reset
+            
+            // TODO: Optimization required. We want to avoid from invoking constructor each time.
+            if isSelected {
+                self.backgroundColor = tabInfo.getUIColor()
+                let primaryTextColor = Utils.getOptimizedPrimaryTextColor(tabInfo.getColor())
+                gearImageView.tintColor = UIColor(argb: primaryTextColor)
+                label.textColor = UIColor(argb: primaryTextColor)
+            } else {
+                self.backgroundColor = Utils.getUIColor(ColorAttr.normalTabColor)
+                gearImageView.tintColor = Utils.getUIColor(ColorAttr.tabIconColor)
+                label.textColor = Utils.getUIColor(ColorAttr.tabTextColor)
+            }
+        }
+    }
+    
     func update(_ tabInfo: TabInfo, _ selected: Bool) {
-        // TODO: String localization.
+        self.tabInfo = tabInfo
+        self.isSelected = selected
+        
         let type = tabInfo.type
         
         if type == .Settings {
             label.isHidden = true
             gearImageView.isHidden = false
             label.text = nil
-            
-            if selected {
-                self.backgroundColor = tabInfo.getUIColor()
-                // TODO: Optimization required. We want to avoid from invoking constructor each time.
-                gearImageView.tintColor = UIColor(argb: Utils.getOptimizedPrimaryTextColor(tabInfo.getColor()))
-            } else {
-                self.backgroundColor = Utils.getUIColor(ColorAttr.normalTabColor)
-                gearImageView.tintColor = Utils.getUIColor(ColorAttr.tabIconColor)
-            }
         } else {
             label.isHidden = false
             gearImageView.isHidden = true
             
-            if selected {
-                self.backgroundColor = tabInfo.getUIColor()
-                // TODO: Optimization required. We want to avoid from invoking constructor each time.
-                label.textColor = UIColor(argb: Utils.getOptimizedPrimaryTextColor(tabInfo.getColor()))
-            } else {
-                self.backgroundColor = Utils.getUIColor(ColorAttr.normalTabColor)
-                label.textColor = Utils.getUIColor(ColorAttr.tabTextColor)
-            }
-            
+            // TODO: String localization.
             switch type {
             case .All:
                 label.text = "All"

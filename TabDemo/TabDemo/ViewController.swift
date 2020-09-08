@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     private var pageViewController: UIPageViewController!
     
     // TODO: String localization.
-    private let tabInfos = [
+    private var tabInfos = [
         TabInfo(type: .All, name: nil, colorIndex: 0),
         TabInfo(type: .Calendar, name: nil, colorIndex: 1),
         TabInfo(type: .Custom, name: "Home2", colorIndex: 2),
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         pageViewController.dataSource = self
         
         // TODO: Testing only.
-        selectTab(8)
+        selectTab(9)
     }
 
     private func selectTab(_ index: Int) {
@@ -93,6 +93,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         if let tabCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: className, for: indexPath) as? TabInfoCollectionViewCell {
             let tabInfo = tabInfos[indexPath.row]
             let selected = indexPath.row == self.selectedTabIndex
+            print("Update collection view cell -> \(tabInfo.name), \(tabInfo.type)")
             tabCollectionViewCell.update(tabInfo, selected)
             return tabCollectionViewCell
         }
@@ -122,6 +123,18 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             self.tabCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
+    
+    func debug() {
+        if tabInfos.count < 2 {
+            return
+        }
+        
+        let index = tabInfos.count-2
+        tabInfos.remove(at: index)
+        let indexPath = IndexPath(item: index, section: 0)
+        self.tabCollectionView.deleteItems(at: [indexPath])
+        //self.tabCollectionView.layoutIfNeeded()
+    }
 }
 
 extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
@@ -145,6 +158,7 @@ extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDe
     private func dashboardController(_ index: Int) -> UIViewController? {
         let className = String(describing: DashboardController.self)
         let dashboardController = storyboard?.instantiateViewController(withIdentifier: className) as! DashboardController
+        //print("dashboardController page index to \(index)")
         dashboardController.pageIndex = index
         return dashboardController
     }
@@ -152,6 +166,7 @@ extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDe
     private func tabInfoSettingsController(_ index: Int) -> UIViewController? {
         let className = String(describing: TabInfoSettingsController.self)
         let tabInfoSettingsController = TabInfoSettingsController(nibName: className, bundle: nil)
+        //print("tabInfoSettingsController page index to \(index)")
         tabInfoSettingsController.pageIndex = index
         return tabInfoSettingsController
     }
@@ -189,8 +204,8 @@ extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDe
                 let pageIndexable = pageViewController.viewControllers!.first as! PageIndexable
                 let pageIndex = pageIndexable.pageIndex
                 
-                tabCollectionView.selectItem(at: IndexPath.init(item: pageIndex, section: 0), animated: false, scrollPosition: .centeredVertically)
-                tabCollectionView.scrollToItem(at: IndexPath.init(item: pageIndex, section: 0), at: .centeredHorizontally, animated: true)
+                tabCollectionView.selectItem(at: IndexPath(item: pageIndex, section: 0), animated: false, scrollPosition: .centeredVertically)
+                tabCollectionView.scrollToItem(at: IndexPath(item: pageIndex, section: 0), at: .centeredHorizontally, animated: true)
                 
                 self.selectedTabIndex = pageIndex
                 updateTabBottomView()

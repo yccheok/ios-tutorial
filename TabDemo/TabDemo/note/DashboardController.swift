@@ -17,6 +17,20 @@ class DashboardController: UIViewController, PageIndexable {
         }
     }
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        print("init in nibname")
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        print("init in coder")
+    }
+    
+    deinit {
+        print("deinit in \(pageIndex)")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

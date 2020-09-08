@@ -11,6 +11,12 @@ import UIKit
 class TabInfoSettingsController: UIViewController, PageIndexable {
     @IBOutlet weak var label: UILabel!
     
+    @IBAction func button_click(_ sender: Any) {
+        if let parent = self.parent?.parent as? ViewController {
+            parent.debug()
+        }
+    }
+    
     var pageIndex = -1 {
         didSet {
             updateLabel()

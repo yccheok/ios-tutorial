@@ -100,6 +100,13 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         return UICollectionViewCell()
     }
     
+    private func shouldSetViewControllers() -> Bool {
+        guard let viewControllers = self.pageViewController.viewControllers else { return true }
+        guard viewControllers.count > 0 else { return true }
+        guard let pageIndexable = viewControllers[0] as? PageIndexable else { return true }
+        return pageIndexable.pageIndex != self.selectedTabIndex
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let oldSelectedTabIndex = self.selectedTabIndex
         self.selectedTabIndex = indexPath.row
@@ -110,23 +117,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             UIPageViewController.NavigationDirection.forward :
             UIPageViewController.NavigationDirection.reverse
         
-        // TODO: How can we improve this code?
-        //
-        // Logic: We will call setViewControllers, if viewControllers is null, or empty, or 1st element of
-        // viewControllers.pageIndex is not equal to self.selectedTabIndex
-        if let viewControllers = self.pageViewController.viewControllers {
-            if viewControllers.count > 0 {
-                if let pageIndexable = viewControllers[0] as? PageIndexable {
-                    if pageIndexable.pageIndex != self.selectedTabIndex {
-                        self.pageViewController.setViewControllers([viewController(At: self.selectedTabIndex)!], direction: direction, animated: true, completion: nil)
-                        self.tabCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-                    }
-                }
-            } else {
-                self.pageViewController.setViewControllers([viewController(At: self.selectedTabIndex)!], direction: direction, animated: true, completion: nil)
-                self.tabCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            }
-        } else {
+        if shouldSetViewControllers() {
             self.pageViewController.setViewControllers([viewController(At: self.selectedTabIndex)!], direction: direction, animated: true, completion: nil)
             self.tabCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }

@@ -111,6 +111,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             UIPageViewController.NavigationDirection.reverse
         
         // TODO: How can we improve this code?
+        //
+        // Logic: We will call setViewControllers, if viewControllers is null, or empty, or 1st element of
+        // viewControllers.pageIndex is not equal to self.selectedTabIndex
         if let viewControllers = self.pageViewController.viewControllers {
             if viewControllers.count > 0 {
                 if let pageIndexable = viewControllers[0] as? PageIndexable {

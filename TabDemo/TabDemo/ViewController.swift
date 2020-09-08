@@ -88,9 +88,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let className = String(describing: TabCollectionViewCell.self)
+        let className = String(describing: TabInfoCollectionViewCell.self)
         
-        if let tabCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: className, for: indexPath) as? TabCollectionViewCell {
+        if let tabCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: className, for: indexPath) as? TabInfoCollectionViewCell {
             let tabInfo = tabInfos[indexPath.row]
             let selected = indexPath.row == self.selectedTabIndex
             tabCollectionViewCell.update(tabInfo, selected)
@@ -126,16 +126,34 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
 extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     func viewController(At index: Int) -> UIViewController? {
-        
         if((index < 0) || (index >= self.tabInfos.count)) {
             return nil
         }
         
+        switch tabInfos[index].type {
+        case .All:
+            return dashboardController(index)
+        case .Calendar:
+            return dashboardController(index)
+        case .Custom:
+            return dashboardController(index)
+        case .Settings:
+            return tabInfoSettingsController(index)
+        }
+    }
+    
+    private func dashboardController(_ index: Int) -> UIViewController? {
         let className = String(describing: DashboardController.self)
         let dashboardController = storyboard?.instantiateViewController(withIdentifier: className) as! DashboardController
         dashboardController.pageIndex = index
         return dashboardController
-        
+    }
+    
+    private func tabInfoSettingsController(_ index: Int) -> UIViewController? {
+        let className = String(describing: TabInfoSettingsController.self)
+        let tabInfoSettingsController = TabInfoSettingsController(nibName: className, bundle: nil)
+        tabInfoSettingsController.pageIndex = index
+        return tabInfoSettingsController
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {

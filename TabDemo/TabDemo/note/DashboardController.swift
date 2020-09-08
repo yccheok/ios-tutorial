@@ -9,14 +9,22 @@
 import UIKit
 
 class DashboardController: UIViewController, PageIndexable {
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var label: UILabel?
     
-    var pageIndex = -1
+    var pageIndex = -1 {
+        didSet {
+            updateLabel()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        label.text = "\(pageIndex) : Label : \(pageIndex)"
+        updateLabel()
+    }
+    
+    private func updateLabel() {
+        label?.text = "Dash \(pageIndex)"
     }
     
     /*

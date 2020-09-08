@@ -8,12 +8,23 @@
 
 import UIKit
 
-class TabInfoSettingsController: UIViewController {
-
+class TabInfoSettingsController: UIViewController, PageIndexable {
+    @IBOutlet weak var label: UILabel!
+    
+    var pageIndex = -1 {
+        didSet {
+            updateLabel()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateLabel()
+    }
+    
+    private func updateLabel() {
+        label?.text = "Settings \(pageIndex)"
     }
 
 

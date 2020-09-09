@@ -8,10 +8,10 @@
 
 import UIKit
 
-class DashboardController: UIViewController, PageIndexable {
+class DashboardController: UIViewController, TabInfoable {
     @IBOutlet weak var label: UILabel?
     
-    var pageIndex = -1 {
+    var tabInfo: TabInfo? = nil {
         didSet {
             updateLabel()
         }
@@ -19,16 +19,17 @@ class DashboardController: UIViewController, PageIndexable {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        print("init in nibname")
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        print("init in coder")
     }
     
     deinit {
-        print("deinit in \(pageIndex)")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     override func viewDidLoad() {
@@ -38,7 +39,18 @@ class DashboardController: UIViewController, PageIndexable {
     }
     
     private func updateLabel() {
-        label?.text = "Dash \(pageIndex)"
+        let n: String?
+        switch (tabInfo?.type) {
+        case .All:
+            n = "All"
+        case .Calendar:
+            n = "Calendar"
+        case .Settings:
+            n = "Settings"
+        default:
+            n = tabInfo?.name
+        }
+        label?.text = "Dash \(n!)"
     }
     
     /*

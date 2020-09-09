@@ -21,6 +21,7 @@ struct TabInfo {
         ColorAttr.greyTabColor,
     ];
     
+    let id: Int64
     let type: TabInfoType
     var name: String?
     var colorIndex: Int

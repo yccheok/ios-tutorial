@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabInfoSettingsController: UIViewController, PageIndexable {
+class TabInfoSettingsController: UIViewController, TabInfoable {
     @IBOutlet weak var label: UILabel!
     
     @IBAction func button_click(_ sender: Any) {
@@ -17,7 +17,7 @@ class TabInfoSettingsController: UIViewController, PageIndexable {
         }
     }
     
-    var pageIndex = -1 {
+    var tabInfo: TabInfo? = nil {
         didSet {
             updateLabel()
         }
@@ -29,8 +29,34 @@ class TabInfoSettingsController: UIViewController, PageIndexable {
         updateLabel()
     }
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    deinit {
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     private func updateLabel() {
-        label?.text = "Settings \(pageIndex)"
+        let n: String?
+        switch (tabInfo?.type) {
+        case .All:
+            n = "All"
+        case .Calendar:
+            n = "Calendar"
+        case .Settings:
+            n = "Settings"
+        default:
+            n = tabInfo?.name
+        }
+        label?.text = "S \(n!)"
     }
 
 

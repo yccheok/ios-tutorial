@@ -12,23 +12,37 @@ class ViewController: UIViewController {
     @IBOutlet weak var tabCollectionView: UICollectionView!
     @IBOutlet weak var tabBottomView: UIView!
     
-    private var selectedTabIndex: Int = -1
+    private var selectedTabInfoIndex: Int = -1
     
     private var pageViewController: UIPageViewController!
     
     // TODO: String localization.
     private var tabInfos = [
-        TabInfo(type: .All, name: nil, colorIndex: 0),
-        TabInfo(type: .Calendar, name: nil, colorIndex: 1),
-        TabInfo(type: .Custom, name: "Home2", colorIndex: 2),
-        TabInfo(type: .Custom, name: "Work3", colorIndex: 3),
-        TabInfo(type: .Custom, name: "Work4", colorIndex: 4),
-        TabInfo(type: .Custom, name: "Work5", colorIndex: 5),
-        TabInfo(type: .Custom, name: "Work6", colorIndex: 6),
-        TabInfo(type: .Custom, name: "Work7", colorIndex: 7),
-        TabInfo(type: .Custom, name: "Work8", colorIndex: 8),
-        TabInfo(type: .Settings, name: nil, colorIndex: 9)
+        TabInfo(id: 0, type: .All, name: nil, colorIndex: 0),
+        TabInfo(id: 1, type: .Calendar, name: nil, colorIndex: 1),
+        TabInfo(id: 2, type: .Custom, name: "Home2", colorIndex: 2),
+        TabInfo(id: 3, type: .Custom, name: "Work3", colorIndex: 3),
+        TabInfo(id: 4, type: .Custom, name: "Work4", colorIndex: 4),
+        TabInfo(id: 5, type: .Custom, name: "Work5", colorIndex: 5),
+        TabInfo(id: 6, type: .Custom, name: "Work6", colorIndex: 6),
+        TabInfo(id: 7, type: .Custom, name: "Work7", colorIndex: 7),
+        TabInfo(id: 8, type: .Custom, name: "Work8", colorIndex: 8),
+        TabInfo(id: 9, type: .Settings, name: nil, colorIndex: 9)
     ]
+    
+    private func getIndex(_ tabInfo: TabInfo?) -> Int {
+        guard let tabInfo = tabInfo else {
+            return -1
+        }
+        
+        for (index, _tabInfo) in tabInfos.enumerated() {
+            if tabInfo.id == _tabInfo.id {
+                return index
+            }
+        }
+        
+        return -1
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +83,7 @@ class ViewController: UIViewController {
     }
     
     private func updateTabBottomView() {
-        self.tabBottomView.backgroundColor = tabInfos[selectedTabIndex].getUIColor()
+        self.tabBottomView.backgroundColor = tabInfos[selectedTabInfoIndex].getUIColor()
     }
     
     private func layoutConfig() -> UICollectionViewCompositionalLayout {
@@ -96,7 +110,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         if let tabCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: className, for: indexPath) as? TabInfoCollectionViewCell {
             let tabInfo = tabInfos[indexPath.row]
-            let selected = indexPath.row == self.selectedTabIndex
+            let selected = indexPath.row == self.selectedTabInfoIndex
             tabCollectionViewCell.update(tabInfo, selected)
             return tabCollectionViewCell
         }
@@ -107,22 +121,22 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     private func shouldSetViewControllers() -> Bool {
         guard let viewControllers = self.pageViewController.viewControllers else { return true }
         guard viewControllers.count > 0 else { return true }
-        guard let pageIndexable = viewControllers[0] as? PageIndexable else { return true }
-        return pageIndexable.pageIndex != self.selectedTabIndex
+        guard let tabInfoable = viewControllers[0] as? TabInfoable else { return true }
+        return tabInfoable.tabInfo != tabInfos[self.selectedTabInfoIndex]
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let oldSelectedTabIndex = self.selectedTabIndex
-        self.selectedTabIndex = indexPath.row
+        let oldSelectedTabInfoIndex = self.selectedTabInfoIndex
+        self.selectedTabInfoIndex = indexPath.row
         
         updateTabBottomView()
             
-        let direction = self.selectedTabIndex > oldSelectedTabIndex ?
+        let direction = self.selectedTabInfoIndex > oldSelectedTabInfoIndex ?
             UIPageViewController.NavigationDirection.forward :
             UIPageViewController.NavigationDirection.reverse
         
         if shouldSetViewControllers() {
-            self.pageViewController.setViewControllers([viewController(At: self.selectedTabIndex)!], direction: direction, animated: true, completion: nil)
+            self.pageViewController.setViewControllers([viewController(At: self.selectedTabInfoIndex)!], direction: direction, animated: true, completion: nil)
             self.tabCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
@@ -146,6 +160,15 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             self.tabCollectionView.scrollToItem(at: indexPath, at: .right, animated: true)
         }
          */
+
+        // Clear left/ right cached view controllers - https://stackoverflow.com/a/21624169/72437
+        pageViewController.dataSource = nil
+        pageViewController.dataSource = self
+
+        // Don't forget to adjust the selection index.
+        if index < self.selectedTabInfoIndex {
+            selectedTabInfoIndex -= 1
+        }
     }
 }
 
@@ -170,20 +193,20 @@ extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDe
     private func dashboardController(_ index: Int) -> UIViewController? {
         let className = String(describing: DashboardController.self)
         let dashboardController = storyboard?.instantiateViewController(withIdentifier: className) as! DashboardController
-        dashboardController.pageIndex = index
+        dashboardController.tabInfo = tabInfos[index]
         return dashboardController
     }
     
     private func tabInfoSettingsController(_ index: Int) -> UIViewController? {
         let className = String(describing: TabInfoSettingsController.self)
         let tabInfoSettingsController = TabInfoSettingsController(nibName: className, bundle: nil)
-        tabInfoSettingsController.pageIndex = index
+        tabInfoSettingsController.tabInfo = tabInfos[index]
         return tabInfoSettingsController
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        var index = (viewController as! PageIndexable).pageIndex
+        var index = getIndex((viewController as! TabInfoable).tabInfo)
         
         if index <= 0 {
             return nil
@@ -196,9 +219,9 @@ extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDe
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        var index = (viewController as! PageIndexable).pageIndex
+        var index = getIndex((viewController as! TabInfoable).tabInfo)
         
-        if index >= tabInfos.count-1 {
+        if index < 0 || index >= tabInfos.count-1 {
             return nil
         }
         
@@ -211,13 +234,16 @@ extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDe
         
         if finished {
             if completed {
-                let pageIndexable = pageViewController.viewControllers!.first as! PageIndexable
-                let pageIndex = pageIndexable.pageIndex
+                let tabInfo = (pageViewController.viewControllers!.first as! TabInfoable).tabInfo
+                let pageIndex = getIndex(tabInfo)
+                if (pageIndex < 0) {
+                    return
+                }
                 let indexPath = getIndexPath(pageIndex)
                 tabCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredVertically)
                 tabCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
                 
-                self.selectedTabIndex = pageIndex
+                self.selectedTabInfoIndex = pageIndex
                 updateTabBottomView()
             }
         }

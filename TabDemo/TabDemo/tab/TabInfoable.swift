@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol PageIndexable {
-    var pageIndex: Int { get set }
+protocol TabInfoable {
+    var tabInfo: TabInfo? { get set }
 }

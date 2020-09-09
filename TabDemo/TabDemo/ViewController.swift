@@ -182,7 +182,7 @@ extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDe
         case .All:
             return dashboardController(index)
         case .Calendar:
-            return dashboardController(index)
+            return calendarController(index)
         case .Custom:
             return dashboardController(index)
         case .Settings:
@@ -192,9 +192,16 @@ extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDe
     
     private func dashboardController(_ index: Int) -> UIViewController? {
         let className = String(describing: DashboardController.self)
-        let dashboardController = storyboard?.instantiateViewController(withIdentifier: className) as! DashboardController
+        let dashboardController = DashboardController(nibName: className, bundle: nil)
         dashboardController.tabInfo = tabInfos[index]
         return dashboardController
+    }
+    
+    private func calendarController(_ index: Int) -> UIViewController? {
+        let className = String(describing: CalendarController.self)
+        let calendarController = CalendarController(nibName: className, bundle: nil)
+        calendarController.tabInfo = tabInfos[index]
+        return calendarController
     }
     
     private func tabInfoSettingsController(_ index: Int) -> UIViewController? {

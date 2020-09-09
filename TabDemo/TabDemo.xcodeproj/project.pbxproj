@@ -19,6 +19,9 @@
 		947785572505F87300CF8A0C /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947785562505F87300CF8A0C /* PageViewController.swift */; };
 		9477855C2506078F00CF8A0C /* TabInfoable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9477855B2506078F00CF8A0C /* TabInfoable.swift */; };
 		9477855E25060ECE00CF8A0C /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9477855D25060ECE00CF8A0C /* DashboardController.swift */; };
+		9480B91C2508E9FB002DB858 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B91A2508E9FB002DB858 /* CalendarController.swift */; };
+		9480B91D2508E9FB002DB858 /* CalendarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9480B91B2508E9FB002DB858 /* CalendarController.xib */; };
+		9480B91F2508EACC002DB858 /* DashboardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9480B91E2508EACC002DB858 /* DashboardController.xib */; };
 		948E8D522503A49B00E6A910 /* TabInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948E8D502503A49B00E6A910 /* TabInfoCollectionViewCell.swift */; };
 		948E8D562503ABA000E6A910 /* TabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948E8D552503ABA000E6A910 /* TabInfo.swift */; };
 		948E8D582503AD6800E6A910 /* TabInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948E8D572503AD6800E6A910 /* TabInfoType.swift */; };
@@ -64,6 +67,9 @@
 		947785562505F87300CF8A0C /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		9477855B2506078F00CF8A0C /* TabInfoable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfoable.swift; sourceTree = "<group>"; };
 		9477855D25060ECE00CF8A0C /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
+		9480B91A2508E9FB002DB858 /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
+		9480B91B2508E9FB002DB858 /* CalendarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarController.xib; sourceTree = "<group>"; };
+		9480B91E2508EACC002DB858 /* DashboardController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardController.xib; sourceTree = "<group>"; };
 		948E8D502503A49B00E6A910 /* TabInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		948E8D552503ABA000E6A910 /* TabInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfo.swift; sourceTree = "<group>"; };
 		948E8D572503AD6800E6A910 /* TabInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfoType.swift; sourceTree = "<group>"; };
@@ -142,8 +148,18 @@
 			isa = PBXGroup;
 			children = (
 				9477855D25060ECE00CF8A0C /* DashboardController.swift */,
+				9480B91E2508EACC002DB858 /* DashboardController.xib */,
 			);
 			path = note;
+			sourceTree = "<group>";
+		};
+		9480B9192508E9D0002DB858 /* calendar */ = {
+			isa = PBXGroup;
+			children = (
+				9480B91A2508E9FB002DB858 /* CalendarController.swift */,
+				9480B91B2508E9FB002DB858 /* CalendarController.xib */,
+			);
+			path = calendar;
 			sourceTree = "<group>";
 		};
 		948E8D542503AB9000E6A910 /* model */ = {
@@ -178,6 +194,7 @@
 		94E9B8942500F40500B0D0FC /* TabDemo */ = {
 			isa = PBXGroup;
 			children = (
+				9480B9192508E9D0002DB858 /* calendar */,
 				947785582505FAD000CF8A0C /* note */,
 				944E6C76250511FB00FE68A1 /* ui */,
 				944E6C732504FFFD00FE68A1 /* extension */,
@@ -332,6 +349,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				94E9B8A22500F40700B0D0FC /* LaunchScreen.storyboard in Resources */,
+				9480B91D2508E9FB002DB858 /* CalendarController.xib in Resources */,
+				9480B91F2508EACC002DB858 /* DashboardController.xib in Resources */,
 				94E9B89F2500F40700B0D0FC /* Assets.xcassets in Resources */,
 				9472388125073B6D0049B050 /* TabInfoSettingsController.xib in Resources */,
 				94E9B89D2500F40500B0D0FC /* Main.storyboard in Resources */,
@@ -376,6 +395,7 @@
 				94E9B8982500F40500B0D0FC /* SceneDelegate.swift in Sources */,
 				947691F825010E08009E0A8D /* DarkThemeManager.swift in Sources */,
 				9472388025073B6D0049B050 /* TabInfoSettingsController.swift in Sources */,
+				9480B91C2508E9FB002DB858 /* CalendarController.swift in Sources */,
 				94E9B8C72500FA2100B0D0FC /* ThemeManager.swift in Sources */,
 				947785572505F87300CF8A0C /* PageViewController.swift in Sources */,
 			);

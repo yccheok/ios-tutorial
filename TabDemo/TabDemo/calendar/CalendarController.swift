@@ -8,12 +8,38 @@
 
 import UIKit
 
-class CalendarController: UIViewController {
-
+class CalendarController: UIViewController, TabInfoable {
+    @IBOutlet weak var label: UILabel!
+    
+    var tabInfo: TabInfo? = nil {
+        didSet {
+            updateLabel()
+        }
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    deinit {
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateLabel()
+    }
+    
+    private func updateLabel() {
+        label?.text = "\((tabInfo?.getPageTitle())!)"
     }
 
 

@@ -9,7 +9,7 @@
 import UIKit
 
 class DashboardController: UIViewController, TabInfoable {
-    @IBOutlet weak var label: UILabel?
+    @IBOutlet weak var label: UILabel!
     
     var tabInfo: TabInfo? = nil {
         didSet {

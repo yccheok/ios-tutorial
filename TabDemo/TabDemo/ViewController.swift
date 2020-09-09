@@ -136,18 +136,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         tabInfos.remove(at: index)
         let indexPath = getIndexPath(index)
         self.tabCollectionView.deleteItems(at: [indexPath])
-        
-        /*
-        DispatchQueue.main.async() {
-            var indexPaths = [IndexPath]()
-            for (index, _) in self.tabInfos.enumerated() {
-                indexPaths.append(self.getIndexPath(index))
-            }
-            self.tabCollectionView.reloadItems(at: indexPaths)
-
-            self.tabCollectionView.scrollToItem(at: self.getIndexPath(self.tabInfos.count-1), at: .right, animated: true)
-        }
-        */
     }
 }
 
@@ -215,9 +203,9 @@ extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDe
             if completed {
                 let pageIndexable = pageViewController.viewControllers!.first as! PageIndexable
                 let pageIndex = pageIndexable.pageIndex
-                
-                tabCollectionView.selectItem(at: getIndexPath(pageIndex), animated: false, scrollPosition: .centeredVertically)
-                tabCollectionView.scrollToItem(at: getIndexPath(pageIndex), at: .centeredHorizontally, animated: true)
+                let indexPath = getIndexPath(pageIndex)
+                tabCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredVertically)
+                tabCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
                 
                 self.selectedTabIndex = pageIndex
                 updateTabBottomView()

@@ -43,14 +43,18 @@ class ViewController: UIViewController {
         // TODO: Testing only.
         selectTab(9)
     }
-
+    
+    private func getIndexPath(_ index: Int) -> IndexPath {
+        return IndexPath(item: index, section: 0)
+    }
+    
     private func selectTab(_ index: Int) {
-        let indexPath = IndexPath(item: index, section: 0)
+        let indexPath = getIndexPath(index)
         self.collectionView(self.tabCollectionView, didSelectItemAt: indexPath)
         
         DispatchQueue.main.async {
             self.tabCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
-            self.tabCollectionView.scrollToItem(at: IndexPath.init(item: self.selectedTabIndex, section: 0), at: .centeredHorizontally, animated: true)
+            self.tabCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
     
@@ -93,7 +97,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         if let tabCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: className, for: indexPath) as? TabInfoCollectionViewCell {
             let tabInfo = tabInfos[indexPath.row]
             let selected = indexPath.row == self.selectedTabIndex
-            print("Update collection view cell -> \(tabInfo.name), \(tabInfo.type)")
             tabCollectionViewCell.update(tabInfo, selected)
             return tabCollectionViewCell
         }
@@ -131,15 +134,26 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let index = tabInfos.count-2
         tabInfos.remove(at: index)
-        let indexPath = IndexPath(item: index, section: 0)
+        let indexPath = getIndexPath(index)
         self.tabCollectionView.deleteItems(at: [indexPath])
-        //self.tabCollectionView.layoutIfNeeded()
+        
+        /*
+        DispatchQueue.main.async() {
+            var indexPaths = [IndexPath]()
+            for (index, _) in self.tabInfos.enumerated() {
+                indexPaths.append(self.getIndexPath(index))
+            }
+            self.tabCollectionView.reloadItems(at: indexPaths)
+
+            self.tabCollectionView.scrollToItem(at: self.getIndexPath(self.tabInfos.count-1), at: .right, animated: true)
+        }
+        */
     }
 }
 
 extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     func viewController(At index: Int) -> UIViewController? {
-        if((index < 0) || (index >= self.tabInfos.count)) {
+        if ((index < 0) || (index >= self.tabInfos.count)) {
             return nil
         }
         
@@ -158,7 +172,6 @@ extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDe
     private func dashboardController(_ index: Int) -> UIViewController? {
         let className = String(describing: DashboardController.self)
         let dashboardController = storyboard?.instantiateViewController(withIdentifier: className) as! DashboardController
-        //print("dashboardController page index to \(index)")
         dashboardController.pageIndex = index
         return dashboardController
     }
@@ -166,7 +179,6 @@ extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDe
     private func tabInfoSettingsController(_ index: Int) -> UIViewController? {
         let className = String(describing: TabInfoSettingsController.self)
         let tabInfoSettingsController = TabInfoSettingsController(nibName: className, bundle: nil)
-        //print("tabInfoSettingsController page index to \(index)")
         tabInfoSettingsController.pageIndex = index
         return tabInfoSettingsController
     }
@@ -204,8 +216,8 @@ extension ViewController: UIPageViewControllerDataSource, UIPageViewControllerDe
                 let pageIndexable = pageViewController.viewControllers!.first as! PageIndexable
                 let pageIndex = pageIndexable.pageIndex
                 
-                tabCollectionView.selectItem(at: IndexPath(item: pageIndex, section: 0), animated: false, scrollPosition: .centeredVertically)
-                tabCollectionView.scrollToItem(at: IndexPath(item: pageIndex, section: 0), at: .centeredHorizontally, animated: true)
+                tabCollectionView.selectItem(at: getIndexPath(pageIndex), animated: false, scrollPosition: .centeredVertically)
+                tabCollectionView.scrollToItem(at: getIndexPath(pageIndex), at: .centeredHorizontally, animated: true)
                 
                 self.selectedTabIndex = pageIndex
                 updateTabBottomView()

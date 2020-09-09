@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZvU-0G-02O">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="owh-ZN-aPN"/>
@@ -77,14 +77,14 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCp-wU-eRl">
-                                <rect key="frame" x="0.0" y="88" width="414" height="4"/>
+                                <rect key="frame" x="0.0" y="814" width="414" height="4"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="4" id="ahd-2t-hbh"/>
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PpV-XC-jHW">
-                                <rect key="frame" x="0.0" y="92" width="414" height="770"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="770"/>
                                 <connections>
                                     <segue destination="kLb-nc-PcT" kind="embed" id="jp2-F7-GMV"/>
                                 </connections>
@@ -94,13 +94,13 @@
                         <constraints>
                             <constraint firstItem="PpV-XC-jHW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FHw-6d-dYl"/>
                             <constraint firstItem="uCp-wU-eRl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="HG7-Y7-dK9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="ZvU-0G-02O" secondAttribute="top" id="Hd6-9K-8Lw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="PpV-XC-jHW" secondAttribute="bottom" id="Kt9-SM-DPp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ZvU-0G-02O" secondAttribute="bottom" id="Hd6-9K-8Lw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="PpV-XC-jHW" secondAttribute="top" id="Kt9-SM-DPp"/>
                             <constraint firstItem="ZvU-0G-02O" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="O8m-bS-7GJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PpV-XC-jHW" secondAttribute="trailing" id="PJZ-BO-14l"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZvU-0G-02O" secondAttribute="trailing" id="Zz6-zR-6VH"/>
-                            <constraint firstItem="uCp-wU-eRl" firstAttribute="top" secondItem="ZvU-0G-02O" secondAttribute="bottom" id="bN4-TD-5SB"/>
-                            <constraint firstItem="PpV-XC-jHW" firstAttribute="top" secondItem="uCp-wU-eRl" secondAttribute="bottom" id="sDE-8h-mBP"/>
+                            <constraint firstItem="uCp-wU-eRl" firstAttribute="bottom" secondItem="ZvU-0G-02O" secondAttribute="top" id="bN4-TD-5SB"/>
+                            <constraint firstItem="PpV-XC-jHW" firstAttribute="bottom" secondItem="uCp-wU-eRl" secondAttribute="top" id="sDE-8h-mBP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uCp-wU-eRl" secondAttribute="trailing" id="wB9-av-Wr1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

@@ -148,18 +148,13 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         let index = tabInfos.count-2
         tabInfos.remove(at: index)
-        let indexPath = getIndexPath(index)
-        self.tabCollectionView.deleteItems(at: [indexPath])
-        
-        // TODO: Possible solution.
-        /*
+
         self.tabCollectionView.reloadData()
         DispatchQueue.main.async() {
             let indexPath = self.getIndexPath(self.tabInfos.count-1)
             self.tabCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredVertically)
             self.tabCollectionView.scrollToItem(at: indexPath, at: .right, animated: true)
         }
-         */
 
         // Clear left/ right cached view controllers - https://stackoverflow.com/a/21624169/72437
         pageViewController.dataSource = nil

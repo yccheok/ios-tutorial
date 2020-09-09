@@ -45,18 +45,7 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
     }
     
     private func updateLabel() {
-        let n: String?
-        switch (tabInfo?.type) {
-        case .All:
-            n = "All"
-        case .Calendar:
-            n = "Calendar"
-        case .Settings:
-            n = "Settings"
-        default:
-            n = tabInfo?.name
-        }
-        label?.text = "S \(n!)"
+        label?.text = "\((tabInfo?.getPageTitle())!)"
     }
 
 

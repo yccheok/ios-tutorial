@@ -39,18 +39,7 @@ class DashboardController: UIViewController, TabInfoable {
     }
     
     private func updateLabel() {
-        let n: String?
-        switch (tabInfo?.type) {
-        case .All:
-            n = "All"
-        case .Calendar:
-            n = "Calendar"
-        case .Settings:
-            n = "Settings"
-        default:
-            n = tabInfo?.name
-        }
-        label?.text = "Dash \(n!)"
+        label?.text = "\((tabInfo?.getPageTitle())!)"
     }
     
     /*

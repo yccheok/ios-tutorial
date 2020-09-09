@@ -46,3 +46,18 @@ extension TabInfo: Equatable {
         
     }
 }
+
+extension TabInfo {
+    func getPageTitle() -> String? {
+        switch self.type {    
+        case .All:
+            return "All"
+        case .Calendar:
+            return "Calendar"
+        case .Custom:
+            return self.name
+        case .Settings:
+            return "Settings"
+        }
+    }
+}

@@ -9,24 +9,29 @@
 import UIKit
 
 class TabInfoSettingsController: UIViewController, TabInfoable {
-    @IBOutlet weak var label: UILabel!
+    private let tabInfoSettingsItemCellClassName = String(describing: TabInfoSettingsItemCell.self)
     
-    @IBAction func button_click(_ sender: Any) {
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var tabInfo: TabInfo?
+       
+    var viewController: ViewController? {
         if let parent = self.parent?.parent as? ViewController {
-            parent.debug()
+            return parent
         }
-    }
-    
-    var tabInfo: TabInfo? = nil {
-        didSet {
-            updateLabel()
-        }
+        return nil
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        updateLabel()
+        
+        collectionView.register(
+            UINib(nibName: tabInfoSettingsItemCellClassName, bundle: nil),
+            forCellWithReuseIdentifier: tabInfoSettingsItemCellClassName
+        )
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -43,11 +48,6 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
-    private func updateLabel() {
-        label?.text = "\((tabInfo?.getPageTitle())!)"
-    }
-
 
     /*
     // MARK: - Navigation
@@ -59,4 +59,25 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
     }
     */
 
+}
+
+extension TabInfoSettingsController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewController?.tabInfos.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let tabInfoSettingsItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: tabInfoSettingsItemCellClassName, for: indexPath) as? TabInfoSettingsItemCell {
+            return tabInfoSettingsItemCell
+        }
+        
+        return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width:collectionView.frame.size.width, height: 44)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
 }

@@ -78,6 +78,10 @@ extension TabInfoSettingsController: UICollectionViewDelegate, UICollectionViewD
         return CGSize(width:collectionView.frame.size.width, height: 44)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
 }

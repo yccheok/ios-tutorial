@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    private let tabInfoCellClassName = String(describing: TabInfoCell.self)
+    
     @IBOutlet weak var tabCollectionView: UICollectionView!
     @IBOutlet weak var tabBottomView: UIView!
     
@@ -17,7 +19,7 @@ class ViewController: UIViewController {
     private var pageViewController: UIPageViewController!
     
     // TODO: String localization.
-    private var tabInfos = [
+    var tabInfos = [
         TabInfo(id: 0, type: .All, name: nil, colorIndex: 0),
         TabInfo(id: 1, type: .Calendar, name: nil, colorIndex: 1),
         TabInfo(id: 2, type: .Custom, name: "Home2", colorIndex: 2),
@@ -106,9 +108,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let className = String(describing: TabInfoCell.self)
-        
-        if let tabCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: className, for: indexPath) as? TabInfoCell {
+        if let tabCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: tabInfoCellClassName, for: indexPath) as? TabInfoCell {
             let tabInfo = tabInfos[indexPath.row]
             let selected = indexPath.row == self.selectedTabInfoIndex
             tabCollectionViewCell.update(tabInfo, selected)

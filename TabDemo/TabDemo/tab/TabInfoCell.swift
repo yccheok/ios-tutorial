@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabInfoCollectionViewCell: UICollectionViewCell {
+class TabInfoCell: UICollectionViewCell {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var gearImageView: UIImageView!

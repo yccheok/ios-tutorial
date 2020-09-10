@@ -106,9 +106,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let className = String(describing: TabInfoCollectionViewCell.self)
+        let className = String(describing: TabInfoCell.self)
         
-        if let tabCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: className, for: indexPath) as? TabInfoCollectionViewCell {
+        if let tabCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: className, for: indexPath) as? TabInfoCell {
             let tabInfo = tabInfos[indexPath.row]
             let selected = indexPath.row == self.selectedTabInfoIndex
             tabCollectionViewCell.update(tabInfo, selected)

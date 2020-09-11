@@ -13,6 +13,7 @@
 		944E6C782505120B00FE68A1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944E6C772505120B00FE68A1 /* Color.swift */; };
 		944E6C7A2505142100FE68A1 /* Utils+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944E6C792505142100FE68A1 /* Utils+UI.swift */; };
 		945D5584250B5B8500B56AD7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D5583250B5B8500B56AD7 /* UIViewController+Extension.swift */; };
+		945D5586250B5F9E00B56AD7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D5585250B5F9E00B56AD7 /* Constants.swift */; };
 		9472388025073B6D0049B050 /* TabInfoSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9472387E25073B6D0049B050 /* TabInfoSettingsController.swift */; };
 		9472388125073B6D0049B050 /* TabInfoSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9472387F25073B6D0049B050 /* TabInfoSettingsController.xib */; };
 		947691F125010847009E0A8D /* LightThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947691F025010847009E0A8D /* LightThemeManager.swift */; };
@@ -64,6 +65,7 @@
 		944E6C772505120B00FE68A1 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		944E6C792505142100FE68A1 /* Utils+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utils+UI.swift"; sourceTree = "<group>"; };
 		945D5583250B5B8500B56AD7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		945D5585250B5F9E00B56AD7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9472387E25073B6D0049B050 /* TabInfoSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfoSettingsController.swift; sourceTree = "<group>"; };
 		9472387F25073B6D0049B050 /* TabInfoSettingsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabInfoSettingsController.xib; sourceTree = "<group>"; };
 		947691F025010847009E0A8D /* LightThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightThemeManager.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				94E9B8A32500F40700B0D0FC /* Info.plist */,
 				947691F3250109D6009E0A8D /* Utils.swift */,
 				947785562505F87300CF8A0C /* PageViewController.swift */,
+				945D5585250B5F9E00B56AD7 /* Constants.swift */,
 			);
 			path = TabDemo;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				947691F125010847009E0A8D /* LightThemeManager.swift in Sources */,
 				9477855C2506078F00CF8A0C /* TabInfoable.swift in Sources */,
 				9477855E25060ECE00CF8A0C /* DashboardController.swift in Sources */,
+				945D5586250B5F9E00B56AD7 /* Constants.swift in Sources */,
 				948E8D562503ABA000E6A910 /* TabInfo.swift in Sources */,
 				947691FA25010FBB009E0A8D /* Utils+Theme.swift in Sources */,
 				948E8D522503A49B00E6A910 /* TabInfoCell.swift in Sources */,

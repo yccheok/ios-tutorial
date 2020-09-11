@@ -92,9 +92,15 @@ class ViewController: UIViewController {
     
     private func layoutConfig() -> UICollectionViewCompositionalLayout {
         return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
-            let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(44), heightDimension: .fractionalHeight(1))
+            let itemSize = NSCollectionLayoutSize(
+                widthDimension: .estimated(CGFloat(Constants.MINIMUM_TOUCH_AREA_SIZE)),
+                heightDimension: .fractionalHeight(1)
+            )
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(44), heightDimension: .absolute(44))
+            let groupSize = NSCollectionLayoutSize(
+                widthDimension: .estimated(CGFloat(Constants.MINIMUM_TOUCH_AREA_SIZE)),
+                heightDimension: .absolute(CGFloat(Constants.MINIMUM_TOUCH_AREA_SIZE))
+            )
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
             section.interGroupSpacing = 1

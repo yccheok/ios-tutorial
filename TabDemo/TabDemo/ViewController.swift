@@ -58,6 +58,8 @@ class ViewController: UIViewController {
         
         // TODO: Testing only.
         selectTab(9)
+        
+        hideKeyboardWhenTappedAround()
     }
     
     private func getIndexPath(_ index: Int) -> IndexPath {

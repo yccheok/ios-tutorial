@@ -23,26 +23,39 @@
                         <rect key="frame" x="446" y="49" width="21" height="87.5"/>
                     </imageView>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NgQ-lX-hlY">
-                        <rect key="frame" x="17.5" y="75.5" width="428.5" height="34"/>
+                        <rect key="frame" x="53.5" y="75.5" width="392.5" height="34"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rg2-4q-ch9">
+                        <rect key="frame" x="17.5" y="74.5" width="36" height="36"/>
+                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="6zj-dc-6cY"/>
+                            <constraint firstAttribute="height" constant="36" id="iuy-yI-w7a"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="rg2-4q-ch9" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="26E-f0-QG9"/>
+                <constraint firstItem="rg2-4q-ch9" firstAttribute="leading" secondItem="1eY-zb-6j0" secondAttribute="trailing" id="8LX-j2-UgE"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="leading" secondItem="1eY-zb-6j0" secondAttribute="leading" id="BqM-9G-i9J"/>
+                <constraint firstItem="NgQ-lX-hlY" firstAttribute="leading" secondItem="rg2-4q-ch9" secondAttribute="trailing" id="Gbd-S6-P4K"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="uRe-fe-Q9I" secondAttribute="bottom" id="N1n-jb-4qa"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="uRe-fe-Q9I" secondAttribute="trailing" id="ThQ-z4-UpA"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="1eY-zb-6j0" secondAttribute="bottom" id="bhM-G6-92V"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="1eY-zb-6j0" secondAttribute="top" id="cY8-57-iVC"/>
                 <constraint firstItem="NgQ-lX-hlY" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="gB5-Pg-w2p"/>
-                <constraint firstItem="NgQ-lX-hlY" firstAttribute="leading" secondItem="1eY-zb-6j0" secondAttribute="trailing" id="hR6-Lq-d78"/>
                 <constraint firstItem="NgQ-lX-hlY" firstAttribute="trailing" secondItem="uRe-fe-Q9I" secondAttribute="leading" id="obn-Dn-eGA"/>
                 <constraint firstItem="uRe-fe-Q9I" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="zh8-y8-Yh8"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="467" height="175"/>
+            <connections>
+                <outlet property="circleView" destination="rg2-4q-ch9" id="HCI-GD-xeK"/>
+            </connections>
             <point key="canvasLocation" x="247.10144927536234" y="62.611607142857139"/>
         </collectionViewCell>
     </objects>

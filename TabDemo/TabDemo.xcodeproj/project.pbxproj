@@ -24,6 +24,7 @@
 		947785572505F87300CF8A0C /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947785562505F87300CF8A0C /* PageViewController.swift */; };
 		9477855C2506078F00CF8A0C /* TabInfoable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9477855B2506078F00CF8A0C /* TabInfoable.swift */; };
 		9477855E25060ECE00CF8A0C /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9477855D25060ECE00CF8A0C /* DashboardController.swift */; };
+		947A5F2E250BCDFC00E8A09E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947A5F2D250BCDFC00E8A09E /* UIView+Extension.swift */; };
 		9480B91C2508E9FB002DB858 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B91A2508E9FB002DB858 /* CalendarController.swift */; };
 		9480B91D2508E9FB002DB858 /* CalendarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9480B91B2508E9FB002DB858 /* CalendarController.xib */; };
 		9480B91F2508EACC002DB858 /* DashboardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9480B91E2508EACC002DB858 /* DashboardController.xib */; };
@@ -76,6 +77,7 @@
 		947785562505F87300CF8A0C /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		9477855B2506078F00CF8A0C /* TabInfoable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfoable.swift; sourceTree = "<group>"; };
 		9477855D25060ECE00CF8A0C /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
+		947A5F2D250BCDFC00E8A09E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9480B91A2508E9FB002DB858 /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		9480B91B2508E9FB002DB858 /* CalendarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarController.xib; sourceTree = "<group>"; };
 		9480B91E2508EACC002DB858 /* DashboardController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardController.xib; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				945D5583250B5B8500B56AD7 /* UIViewController+Extension.swift */,
 				944E6C742505001500FE68A1 /* UIColor+Extension.swift */,
+				947A5F2D250BCDFC00E8A09E /* UIView+Extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				944E6C782505120B00FE68A1 /* Color.swift in Sources */,
 				94E9B8C92501004900B0D0FC /* ColorAttr.swift in Sources */,
 				94E9B8982500F40500B0D0FC /* SceneDelegate.swift in Sources */,
+				947A5F2E250BCDFC00E8A09E /* UIView+Extension.swift in Sources */,
 				947691F825010E08009E0A8D /* DarkThemeManager.swift in Sources */,
 				9472388025073B6D0049B050 /* TabInfoSettingsController.swift in Sources */,
 				9480B91C2508E9FB002DB858 /* CalendarController.swift in Sources */,

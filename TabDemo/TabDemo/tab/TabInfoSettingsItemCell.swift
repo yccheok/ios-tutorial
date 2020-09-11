@@ -10,9 +10,13 @@ import UIKit
 
 class TabInfoSettingsItemCell: UICollectionViewCell {
 
+    @IBOutlet weak var circleView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        circleView.asCircle()
     }
 
 }

@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     
     private var pageViewController: UIPageViewController!
     
+    private var originalSize: CGSize?
+    
     // TODO: String localization.
     var tabInfos = [
         TabInfo(id: 0, type: .All, name: nil, colorIndex: 0),
@@ -60,6 +62,38 @@ class ViewController: UIViewController {
         selectTab(9)
         
         hideKeyboardWhenTappedAround()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.originalSize == nil {
+                let originalSize = self.view.frame.size
+                self.originalSize = originalSize
+                self.view.frame.size = CGSize(
+                    width: originalSize.width,
+                    height: originalSize.height - keyboardSize.height
+                )
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let originalSize = self.originalSize {
+            self.view.frame.size = originalSize
+            self.originalSize = nil
+        }
     }
     
     private func getIndexPath(_ index: Int) -> IndexPath {

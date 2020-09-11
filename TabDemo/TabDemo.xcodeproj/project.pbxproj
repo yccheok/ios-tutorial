@@ -12,6 +12,7 @@
 		944E6C752505001500FE68A1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944E6C742505001500FE68A1 /* UIColor+Extension.swift */; };
 		944E6C782505120B00FE68A1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944E6C772505120B00FE68A1 /* Color.swift */; };
 		944E6C7A2505142100FE68A1 /* Utils+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944E6C792505142100FE68A1 /* Utils+UI.swift */; };
+		945D5584250B5B8500B56AD7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D5583250B5B8500B56AD7 /* UIViewController+Extension.swift */; };
 		9472388025073B6D0049B050 /* TabInfoSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9472387E25073B6D0049B050 /* TabInfoSettingsController.swift */; };
 		9472388125073B6D0049B050 /* TabInfoSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9472387F25073B6D0049B050 /* TabInfoSettingsController.xib */; };
 		947691F125010847009E0A8D /* LightThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947691F025010847009E0A8D /* LightThemeManager.swift */; };
@@ -62,6 +63,7 @@
 		944E6C742505001500FE68A1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		944E6C772505120B00FE68A1 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		944E6C792505142100FE68A1 /* Utils+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utils+UI.swift"; sourceTree = "<group>"; };
+		945D5583250B5B8500B56AD7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		9472387E25073B6D0049B050 /* TabInfoSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfoSettingsController.swift; sourceTree = "<group>"; };
 		9472387F25073B6D0049B050 /* TabInfoSettingsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabInfoSettingsController.xib; sourceTree = "<group>"; };
 		947691F025010847009E0A8D /* LightThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightThemeManager.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		944E6C732504FFFD00FE68A1 /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				945D5583250B5B8500B56AD7 /* UIViewController+Extension.swift */,
 				944E6C742505001500FE68A1 /* UIColor+Extension.swift */,
 			);
 			path = extension;
@@ -397,6 +400,7 @@
 				944E6C752505001500FE68A1 /* UIColor+Extension.swift in Sources */,
 				948E8D582503AD6800E6A910 /* TabInfoType.swift in Sources */,
 				944E6C7A2505142100FE68A1 /* Utils+UI.swift in Sources */,
+				945D5584250B5B8500B56AD7 /* UIViewController+Extension.swift in Sources */,
 				947691F4250109D6009E0A8D /* Utils.swift in Sources */,
 				944E6C782505120B00FE68A1 /* Color.swift in Sources */,
 				94E9B8C92501004900B0D0FC /* ColorAttr.swift in Sources */,

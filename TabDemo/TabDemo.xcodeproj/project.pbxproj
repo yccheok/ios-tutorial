@@ -41,6 +41,8 @@
 		94E9B8B82500F40700B0D0FC /* TabDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8B72500F40700B0D0FC /* TabDemoUITests.swift */; };
 		94E9B8C72500FA2100B0D0FC /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8C62500FA2100B0D0FC /* ThemeManager.swift */; };
 		94E9B8C92501004900B0D0FC /* ColorAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9B8C82501004900B0D0FC /* ColorAttr.swift */; };
+		94F543E1250F0408007F81CE /* TabInfoSettingsFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F543DF250F0408007F81CE /* TabInfoSettingsFooterCell.swift */; };
+		94F543E2250F0408007F81CE /* TabInfoSettingsFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94F543E0250F0408007F81CE /* TabInfoSettingsFooterCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,8 @@
 		94E9B8B92500F40700B0D0FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94E9B8C62500FA2100B0D0FC /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		94E9B8C82501004900B0D0FC /* ColorAttr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAttr.swift; sourceTree = "<group>"; };
+		94F543DF250F0408007F81CE /* TabInfoSettingsFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfoSettingsFooterCell.swift; sourceTree = "<group>"; };
+		94F543E0250F0408007F81CE /* TabInfoSettingsFooterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabInfoSettingsFooterCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,8 @@
 				9472387F25073B6D0049B050 /* TabInfoSettingsController.xib */,
 				9447F3CC250A2EEA005FF401 /* TabInfoSettingsItemCell.swift */,
 				9447F3CD250A2EEA005FF401 /* TabInfoSettingsItemCell.xib */,
+				94F543DF250F0408007F81CE /* TabInfoSettingsFooterCell.swift */,
+				94F543E0250F0408007F81CE /* TabInfoSettingsFooterCell.xib */,
 			);
 			path = tab;
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94E9B8A22500F40700B0D0FC /* LaunchScreen.storyboard in Resources */,
+				94F543E2250F0408007F81CE /* TabInfoSettingsFooterCell.xib in Resources */,
 				9480B91D2508E9FB002DB858 /* CalendarController.xib in Resources */,
 				9480B91F2508EACC002DB858 /* DashboardController.xib in Resources */,
 				94E9B89F2500F40700B0D0FC /* Assets.xcassets in Resources */,
@@ -419,6 +426,7 @@
 				947691F4250109D6009E0A8D /* Utils.swift in Sources */,
 				944E6C782505120B00FE68A1 /* Color.swift in Sources */,
 				94E9B8C92501004900B0D0FC /* ColorAttr.swift in Sources */,
+				94F543E1250F0408007F81CE /* TabInfoSettingsFooterCell.swift in Sources */,
 				94E9B8982500F40500B0D0FC /* SceneDelegate.swift in Sources */,
 				947A5F2E250BCDFC00E8A09E /* UIView+Extension.swift in Sources */,
 				947691F825010E08009E0A8D /* DarkThemeManager.swift in Sources */,

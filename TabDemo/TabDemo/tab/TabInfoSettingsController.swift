@@ -9,7 +9,8 @@
 import UIKit
 
 class TabInfoSettingsController: UIViewController, TabInfoable {
-    private let tabInfoSettingsItemCellClassName = String(describing: TabInfoSettingsItemCell.self)
+    private static let tabInfoSettingsItemCellClassName = String(describing: TabInfoSettingsItemCell.self)
+    private static let tabInfoSettingsFooterCellClassName = String(describing: TabInfoSettingsFooterCell.self)
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -26,8 +27,14 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
         super.viewDidLoad()
         
         collectionView.register(
-            UINib(nibName: tabInfoSettingsItemCellClassName, bundle: nil),
-            forCellWithReuseIdentifier: tabInfoSettingsItemCellClassName
+            UINib(nibName: TabInfoSettingsController.tabInfoSettingsItemCellClassName, bundle: nil),
+            forCellWithReuseIdentifier: TabInfoSettingsController.tabInfoSettingsItemCellClassName
+        )
+        
+        collectionView.register(
+            UINib(nibName: TabInfoSettingsController.tabInfoSettingsFooterCellClassName, bundle: nil),
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+            withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsFooterCellClassName
         )
         
         collectionView.delegate = self
@@ -67,14 +74,33 @@ extension TabInfoSettingsController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let tabInfoSettingsItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: tabInfoSettingsItemCellClassName, for: indexPath) as? TabInfoSettingsItemCell {
+        if let tabInfoSettingsItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsItemCellClassName, for: indexPath) as? TabInfoSettingsItemCell {
             return tabInfoSettingsItemCell
         }
         
         return UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+        switch kind {
+        case UICollectionView.elementKindSectionFooter:
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsFooterCellClassName, for: indexPath)
+            return footerView
+
+        default:
+            fatalError()
+        }
+    }
+        
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(
+            width: collectionView.frame.size.width,
+            height: CGFloat(Constants.TAB_INFO_SETTINGS_CELL_HEIGHT)
+        )
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return CGSize(
             width: collectionView.frame.size.width,
             height: CGFloat(Constants.TAB_INFO_SETTINGS_CELL_HEIGHT)

@@ -31,7 +31,14 @@ class ViewController: UIViewController {
         TabInfo(id: 6, type: .Custom, name: "Work6", colorIndex: 6),
         TabInfo(id: 7, type: .Custom, name: "Work7", colorIndex: 7),
         TabInfo(id: 8, type: .Custom, name: "Work8", colorIndex: 8),
-        TabInfo(id: 9, type: .Settings, name: nil, colorIndex: 9)
+        TabInfo(id: 9, type: .Custom, name: "Home9", colorIndex: 9),
+        TabInfo(id: 10, type: .Custom, name: "Work10", colorIndex: 10),
+        TabInfo(id: 11, type: .Custom, name: "Work11", colorIndex: 11),
+        TabInfo(id: 12, type: .Custom, name: "Work12", colorIndex: 12),
+        TabInfo(id: 13, type: .Custom, name: "Work13", colorIndex: 13),
+        TabInfo(id: 14, type: .Custom, name: "Work14", colorIndex: 14),
+        TabInfo(id: 15, type: .Custom, name: "15", colorIndex: 15),
+        TabInfo(id: 16, type: .Settings, name: nil, colorIndex: 16)
     ]
     
     private func getIndex(_ tabInfo: TabInfo?) -> Int {

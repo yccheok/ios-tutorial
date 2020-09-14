@@ -52,6 +52,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         tabCollectionView.collectionViewLayout = layoutConfig()
+        
+        tabCollectionView.showsHorizontalScrollIndicator = false
+        tabCollectionView.showsVerticalScrollIndicator = false
+        
         tabCollectionView.delegate = self
         tabCollectionView.dataSource = self
         
@@ -125,7 +129,10 @@ class ViewController: UIViewController {
     }
     
     private func layoutConfig() -> UICollectionViewCompositionalLayout {
-        return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.scrollDirection = .horizontal
+        
+        return UICollectionViewCompositionalLayout (sectionProvider: { (sectionNumber, env) -> NSCollectionLayoutSection? in
             let itemSize = NSCollectionLayoutSize(
                 widthDimension: .estimated(CGFloat(Constants.MINIMUM_TOUCH_AREA_SIZE)),
                 heightDimension: .fractionalHeight(1)
@@ -138,9 +145,8 @@ class ViewController: UIViewController {
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
             section.interGroupSpacing = 1
-            section.orthogonalScrollingBehavior = .continuous
             return section
-        }
+        }, configuration: configuration)
     }
 }
 

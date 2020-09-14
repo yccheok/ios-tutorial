@@ -7,3 +7,8 @@
 //
 
 import Foundation
+import UIKit
+
+protocol TabInfoSettingsItemCellDelegate {
+    func crossButtonClick(_ sender: UIButton)
+}

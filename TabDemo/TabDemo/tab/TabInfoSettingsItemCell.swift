@@ -12,6 +12,12 @@ class TabInfoSettingsItemCell: UICollectionViewCell {
 
     @IBOutlet weak var circleView: UIView!
     
+    var delegate: TabInfoSettingsItemCellDelegate?
+    
+    @IBAction func crossButtonClick(_ sender: Any) {
+        delegate?.crossButtonClick(sender as! UIButton)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

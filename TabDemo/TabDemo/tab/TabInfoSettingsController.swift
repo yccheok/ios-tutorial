@@ -75,6 +75,7 @@ extension TabInfoSettingsController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let tabInfoSettingsItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsItemCellClassName, for: indexPath) as? TabInfoSettingsItemCell {
+            tabInfoSettingsItemCell.delegate = self
             return tabInfoSettingsItemCell
         }
         
@@ -112,5 +113,17 @@ extension TabInfoSettingsController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+}
+
+extension TabInfoSettingsController: TabInfoSettingsItemCellDelegate {
+    func crossButtonClick(_ sender: UIButton) {
+        print("crossButtonClick happens")
+        
+        let hitPoint = (sender as AnyObject).convert(CGPoint.zero, to: collectionView)
+        if let indexPath = collectionView.indexPathForItem(at: hitPoint) {
+            // use indexPath to get needed data
+            print("crossButtonClick row is -> \(indexPath.row)")
+        }
     }
 }

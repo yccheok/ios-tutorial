@@ -28,6 +28,7 @@
 		9480B91C2508E9FB002DB858 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9480B91A2508E9FB002DB858 /* CalendarController.swift */; };
 		9480B91D2508E9FB002DB858 /* CalendarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9480B91B2508E9FB002DB858 /* CalendarController.xib */; };
 		9480B91F2508EACC002DB858 /* DashboardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9480B91E2508EACC002DB858 /* DashboardController.xib */; };
+		948131FF250F41C70067072A /* TabInfoSettingsItemCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948131FE250F41C70067072A /* TabInfoSettingsItemCellDelegate.swift */; };
 		948E8D522503A49B00E6A910 /* TabInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948E8D502503A49B00E6A910 /* TabInfoCell.swift */; };
 		948E8D562503ABA000E6A910 /* TabInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948E8D552503ABA000E6A910 /* TabInfo.swift */; };
 		948E8D582503AD6800E6A910 /* TabInfoType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948E8D572503AD6800E6A910 /* TabInfoType.swift */; };
@@ -83,6 +84,7 @@
 		9480B91A2508E9FB002DB858 /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		9480B91B2508E9FB002DB858 /* CalendarController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarController.xib; sourceTree = "<group>"; };
 		9480B91E2508EACC002DB858 /* DashboardController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardController.xib; sourceTree = "<group>"; };
+		948131FE250F41C70067072A /* TabInfoSettingsItemCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfoSettingsItemCellDelegate.swift; sourceTree = "<group>"; };
 		948E8D502503A49B00E6A910 /* TabInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfoCell.swift; sourceTree = "<group>"; };
 		948E8D552503ABA000E6A910 /* TabInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfo.swift; sourceTree = "<group>"; };
 		948E8D572503AD6800E6A910 /* TabInfoType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfoType.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				9447F3CD250A2EEA005FF401 /* TabInfoSettingsItemCell.xib */,
 				94F543DF250F0408007F81CE /* TabInfoSettingsFooterCell.swift */,
 				94F543E0250F0408007F81CE /* TabInfoSettingsFooterCell.xib */,
+				948131FE250F41C70067072A /* TabInfoSettingsItemCellDelegate.swift */,
 			);
 			path = tab;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				9447F3CE250A2EEA005FF401 /* TabInfoSettingsItemCell.swift in Sources */,
 				94E9B8962500F40500B0D0FC /* AppDelegate.swift in Sources */,
 				947691F125010847009E0A8D /* LightThemeManager.swift in Sources */,
+				948131FF250F41C70067072A /* TabInfoSettingsItemCellDelegate.swift in Sources */,
 				9477855C2506078F00CF8A0C /* TabInfoable.swift in Sources */,
 				9477855E25060ECE00CF8A0C /* DashboardController.swift in Sources */,
 				945D5586250B5F9E00B56AD7 /* Constants.swift in Sources */,

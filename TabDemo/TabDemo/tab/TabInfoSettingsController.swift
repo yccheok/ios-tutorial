@@ -23,6 +23,10 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
         return nil
     }
     
+    var filteredTabInfos: [TabInfo]? {
+        return self.viewController?.tabInfos.filter({ $0.type != TabInfoType.Settings })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,12 +74,13 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
 
 extension TabInfoSettingsController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewController?.tabInfos.count ?? 0
+        return filteredTabInfos?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let tabInfoSettingsItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsItemCellClassName, for: indexPath) as? TabInfoSettingsItemCell {
             tabInfoSettingsItemCell.delegate = self
+            tabInfoSettingsItemCell.textField.text = filteredTabInfos?[indexPath.row].getPageTitle()
             return tabInfoSettingsItemCell
         }
         
@@ -124,6 +129,10 @@ extension TabInfoSettingsController: TabInfoSettingsItemCellDelegate {
         if let indexPath = collectionView.indexPathForItem(at: hitPoint) {
             // use indexPath to get needed data
             print("crossButtonClick row is -> \(indexPath.row)")
+            
+            viewController?.deleteTabInfo(indexPath)
+            
+            self.collectionView.deleteItems(at: [indexPath])
         }
     }
 }

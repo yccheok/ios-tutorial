@@ -75,6 +75,21 @@ class ViewController: UIViewController {
         hideKeyboardWhenTappedAround()
     }
     
+    func deleteTabInfo(_ indexPath: IndexPath) {
+        tabInfos.remove(at: indexPath.row)
+        
+        tabCollectionView.deleteItems(at: [indexPath])
+        
+        // Clear left/ right cached view controllers - https://stackoverflow.com/a/21624169/72437
+        pageViewController.dataSource = nil
+        pageViewController.dataSource = self
+
+        // Don't forget to adjust the selection index.
+        if indexPath.row < self.selectedTabInfoIndex {
+            self.selectedTabInfoIndex -= 1
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

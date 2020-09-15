@@ -57,6 +57,7 @@
             <size key="customSize" width="467" height="162"/>
             <connections>
                 <outlet property="circleView" destination="rg2-4q-ch9" id="HCI-GD-xeK"/>
+                <outlet property="textField" destination="NgQ-lX-hlY" id="4d9-LC-pcf"/>
             </connections>
             <point key="canvasLocation" x="250.00000000000003" y="34.151785714285715"/>
         </collectionViewCell>

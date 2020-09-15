@@ -12,6 +12,8 @@ class TabInfoSettingsItemCell: UICollectionViewCell {
 
     @IBOutlet weak var circleView: UIView!
     
+    @IBOutlet weak var textField: UITextField!
+    
     var delegate: TabInfoSettingsItemCellDelegate?
     
     @IBAction func crossButtonClick(_ sender: Any) {

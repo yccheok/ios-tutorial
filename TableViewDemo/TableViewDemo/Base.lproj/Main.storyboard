@@ -48,7 +48,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Movie" id="8dG-MG-qua"/>
+                    <navigationItem key="navigationItem" title="Movie" id="8dG-MG-qua">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="l2d-k4-kqw">
+                            <connections>
+                                <action selector="editAction:" destination="BYZ-38-t0r" id="8bS-6u-ubT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="vVt-cD-xfQ" id="Lx8-b9-N7v"/>
                     </connections>

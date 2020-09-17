@@ -21,11 +21,20 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
+
+    @IBAction func editAction(_ sender: UIBarButtonItem) {
+        self.tableView.setEditing(!(tableView.isEditing), animated: true)
+        
+        sender.title = (self.tableView.isEditing) ? "Done" : "Edit"
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

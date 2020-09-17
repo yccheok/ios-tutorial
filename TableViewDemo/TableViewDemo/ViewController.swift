@@ -57,6 +57,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    // MARK: Customization
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return UITableViewCell.EditingStyle.delete
     }

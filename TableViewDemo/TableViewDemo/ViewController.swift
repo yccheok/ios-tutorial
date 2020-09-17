@@ -34,7 +34,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return movies.count
     }
     
+    // Will show drag button on the right, if we conform this method.
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedObjTemp = movies[sourceIndexPath.item]
+        movies.remove(at: sourceIndexPath.item)
+        movies.insert(movedObjTemp, at: destinationIndexPath.item)
+    }
+    
+    // Will show Delete button on the right, if we conform this method.
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

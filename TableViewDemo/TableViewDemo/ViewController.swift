@@ -20,6 +20,8 @@ class ViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
 
     @IBAction func editAction(_ sender: UIBarButtonItem) {

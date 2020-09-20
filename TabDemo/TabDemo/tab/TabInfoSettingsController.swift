@@ -30,6 +30,8 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView.collectionViewLayout = layoutConfig()
+        
         collectionView.register(
             UINib(nibName: TabInfoSettingsController.tabInfoSettingsItemCellClassName, bundle: nil),
             forCellWithReuseIdentifier: TabInfoSettingsController.tabInfoSettingsItemCellClassName
@@ -43,6 +45,39 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    private func layoutConfig() -> UICollectionViewCompositionalLayout {
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.scrollDirection = .vertical
+        
+        return UICollectionViewCompositionalLayout (sectionProvider: { (sectionNumber, env) -> NSCollectionLayoutSection? in
+            let itemSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .absolute(CGFloat(Constants.TAB_INFO_SETTINGS_CELL_HEIGHT))
+            )
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            let groupSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .absolute(CGFloat(Constants.TAB_INFO_SETTINGS_CELL_HEIGHT))
+            )
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            let section = NSCollectionLayoutSection(group: group)
+            section.interGroupSpacing = 0
+            
+            let footerSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .absolute(CGFloat(Constants.TAB_INFO_SETTINGS_CELL_HEIGHT))
+            )
+            let sectionFooter = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: footerSize,
+                elementKind: UICollectionView.elementKindSectionFooter,
+                alignment: .bottom
+            )
+            section.boundarySupplementaryItems = [sectionFooter]
+            
+            return section
+        }, configuration: configuration)
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -97,20 +132,6 @@ extension TabInfoSettingsController: UICollectionViewDelegate, UICollectionViewD
         default:
             fatalError()
         }
-    }
-        
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(
-            width: collectionView.frame.size.width,
-            height: CGFloat(Constants.TAB_INFO_SETTINGS_CELL_HEIGHT)
-        )
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(
-            width: collectionView.frame.size.width,
-            height: CGFloat(Constants.TAB_INFO_SETTINGS_CELL_HEIGHT)
-        )
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

@@ -11,7 +11,7 @@ import Foundation
 struct Constants {
     static let MINIMUM_TOUCH_AREA_SIZE = 44
     
-    static let TAB_INFO_SETTINGS_CELL_HEIGHT = 56
+    static let TAB_INFO_SETTINGS_CELL_HEIGHT = 44
 
     private init() {
     }

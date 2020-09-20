@@ -42,11 +42,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: ViewController.tableViewItemCellClassName, for: indexPath) as? TableViewItemCell {
-            cell.textField?.text = movies[indexPath.row]
-            return cell
+        if let item = tableView.dequeueReusableCell(withIdentifier: ViewController.tableViewItemCellClassName, for: indexPath) as? TableViewItemCell {
+            item.textField?.text = movies[indexPath.row]
+            return item
         }
 
         return TableViewItemCell()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: ViewController.tableViewFooterCellClassName) as? TableViewFooterCell {
+            return footer
+        }
+
+       return nil
     }
 }

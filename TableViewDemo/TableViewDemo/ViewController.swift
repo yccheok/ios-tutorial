@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        //tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
 
     @IBAction func editAction(_ sender: UIBarButtonItem) {
@@ -58,7 +58,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
+    /*
     // MARK: Customization
     
     func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
@@ -75,6 +75,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         return proposedDestinationIndexPath
-    }
+    }*/
 }
 

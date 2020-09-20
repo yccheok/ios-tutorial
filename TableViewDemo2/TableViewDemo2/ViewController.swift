@@ -8,12 +8,45 @@
 import UIKit
 
 class ViewController: UIViewController {
+    private static let tableViewItemCellClassName = String(describing: TableViewItemCell.self)
+    private static let tableViewFooterCellClassName = String(describing: TableViewFooterCell.self)
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var movies = ["The Lion King", "The Incredibles", "Guardians of the Galaxy", "The Flash", "The Avengers", "The Dark Knight", "The Walking Dead", "Insidious", "Conguring"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+       
+        tableView.register(
+            UINib(nibName: ViewController.tableViewItemCellClassName, bundle: nil),
+            forCellReuseIdentifier: ViewController.tableViewItemCellClassName
+        )
+        
+        tableView.register(
+            UINib(nibName: ViewController.tableViewFooterCellClassName, bundle: nil),
+            forHeaderFooterViewReuseIdentifier: ViewController.tableViewFooterCellClassName
+        )
+        
+        tableView.dataSource = self
+        tableView.delegate = self
     }
-
 
 }
 
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return movies.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: ViewController.tableViewItemCellClassName, for: indexPath) as? TableViewItemCell {
+            cell.textField?.text = movies[indexPath.row]
+            return cell
+        }
+
+        return TableViewItemCell()
+    }
+}

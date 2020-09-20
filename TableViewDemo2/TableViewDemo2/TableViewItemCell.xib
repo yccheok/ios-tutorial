@@ -15,8 +15,24 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Item" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8p4-BS-yMb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="8p4-BS-yMb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="7s0-ui-xxh"/>
+                    <constraint firstAttribute="trailing" secondItem="8p4-BS-yMb" secondAttribute="trailing" id="Wsi-Qk-06k"/>
+                    <constraint firstItem="8p4-BS-yMb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="geb-SA-qOy"/>
+                    <constraint firstAttribute="bottom" secondItem="8p4-BS-yMb" secondAttribute="bottom" id="izw-C3-7vc"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="textField" destination="8p4-BS-yMb" id="fgx-Yw-nFT"/>
+            </connections>
             <point key="canvasLocation" x="79.710144927536234" y="143.63839285714286"/>
         </tableViewCell>
     </objects>

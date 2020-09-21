@@ -90,6 +90,18 @@ class ViewController: UIViewController {
         }
     }
     
+    func moveTabInfo(at indexPath: IndexPath, to newIndexPath: IndexPath) {
+        let temp = tabInfos[indexPath.item]
+        tabInfos.remove(at: indexPath.item)
+        tabInfos.insert(temp, at: newIndexPath.item)
+        
+        tabCollectionView.moveItem(at: indexPath, to: newIndexPath)
+        
+        // Clear left/ right cached view controllers - https://stackoverflow.com/a/21624169/72437
+        pageViewController.dataSource = nil
+        pageViewController.dataSource = self
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

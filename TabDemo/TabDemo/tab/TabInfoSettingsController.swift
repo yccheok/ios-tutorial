@@ -45,6 +45,24 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        let gesture = UILongPressGestureRecognizer(target:self, action: #selector(longPressGesture))
+        // Mimic short tap. But this blocks the events for delete button and text field :-(
+        gesture.minimumPressDuration = 0
+        collectionView.addGestureRecognizer(gesture)
+    }
+    
+    @objc func longPressGesture(gesture: UILongPressGestureRecognizer) {
+        switch(gesture.state) {
+        case UIGestureRecognizerState.began:
+            self.began(gesture)
+        case UIGestureRecognizerState.changed:
+            self.changed(gesture)
+        case UIGestureRecognizerState.ended:
+            self.end(gesture)
+        default:
+            self.cancel(gesture)
+        }
     }
     
     private func layoutConfig() -> UICollectionViewCompositionalLayout {
@@ -161,8 +179,11 @@ extension TabInfoSettingsController: UICollectionViewDelegate {
         print("moveItemAt destinationIndexPath -> \(destinationIndexPath)")
         
         viewController?.moveTabInfo(at: sourceIndexPath, to: destinationIndexPath)
-        
-        self.collectionView.moveItem(at: sourceIndexPath, to: destinationIndexPath)
+
+        // ??? Doesn't work. Force to use reloadData
+        //self.collectionView.moveItem(at: sourceIndexPath, to: destinationIndexPath)
+        //self.collectionView.reloadItems(at: [sourceIndexPath, destinationIndexPath])
+        self.collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {

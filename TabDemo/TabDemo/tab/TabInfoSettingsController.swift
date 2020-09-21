@@ -162,7 +162,8 @@ extension TabInfoSettingsController: UICollectionViewDelegate {
         
         viewController?.moveTabInfo(at: sourceIndexPath, to: destinationIndexPath)
         
-        self.collectionView.moveItem(at: sourceIndexPath, to: destinationIndexPath)
+        // FIXME: Use diff data source.
+        self.collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
@@ -186,7 +187,9 @@ extension TabInfoSettingsController: ReorderDelegate {
     
     func changed(_ gesture: UILongPressGestureRecognizer) {
         print("==changed==")
-        collectionView?.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+        var location = gesture.location(in: collectionView)
+        location.x = collectionView.frame.width / 2
+        collectionView?.updateInteractiveMovementTargetPosition(location)
     }
     
     func end(_ gesture: UILongPressGestureRecognizer) {

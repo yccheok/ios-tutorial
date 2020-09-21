@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         pageViewController.dataSource = self
         
         // TODO: Testing only.
-        selectTab(9)
+        selectTab(16)
         
         hideKeyboardWhenTappedAround()
     }

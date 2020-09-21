@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -25,7 +27,7 @@
                     </textField>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rg2-4q-ch9">
                         <rect key="frame" x="18" y="63" width="36" height="36"/>
-                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemRedColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="36" id="6zj-dc-6cY"/>
                             <constraint firstAttribute="height" constant="36" id="iuy-yI-w7a"/>
@@ -40,7 +42,7 @@
                     </button>
                 </subviews>
             </view>
-            <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" systemColor="systemYellowColor"/>
             <constraints>
                 <constraint firstItem="rg2-4q-ch9" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="26E-f0-QG9"/>
                 <constraint firstAttribute="bottom" secondItem="knq-je-Nbf" secondAttribute="bottom" id="3EZ-Gz-xdO"/>
@@ -57,6 +59,7 @@
             <size key="customSize" width="467" height="162"/>
             <connections>
                 <outlet property="circleView" destination="rg2-4q-ch9" id="HCI-GD-xeK"/>
+                <outlet property="reorderImageView" destination="uRe-fe-Q9I" id="rlr-Hj-kb5"/>
                 <outlet property="textField" destination="NgQ-lX-hlY" id="4d9-LC-pcf"/>
             </connections>
             <point key="canvasLocation" x="250.00000000000003" y="34.151785714285715"/>
@@ -65,5 +68,11 @@
     <resources>
         <image name="line.horizontal.3" catalog="system" width="128" height="64"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

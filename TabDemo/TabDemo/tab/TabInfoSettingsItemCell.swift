@@ -14,7 +14,11 @@ class TabInfoSettingsItemCell: UICollectionViewCell {
     
     @IBOutlet weak var textField: UITextField!
     
+    @IBOutlet weak var reorderImageView: UIImageView!
+    
     var delegate: TabInfoSettingsItemCellDelegate?
+    
+    var reorderDelegate: ReorderDelegate?
     
     @IBAction func crossButtonClick(_ sender: Any) {
         delegate?.crossButtonClick(sender as! UIButton)
@@ -25,6 +29,23 @@ class TabInfoSettingsItemCell: UICollectionViewCell {
         // Initialization code
         
         circleView.asCircle()
+        
+        reorderImageView.isUserInteractionEnabled = true
+        let gesture = UILongPressGestureRecognizer(target:self, action: #selector(longPressGesture))
+        gesture.minimumPressDuration = 0
+        reorderImageView.addGestureRecognizer(gesture)
     }
-
+    
+    @objc func longPressGesture(gesture: UILongPressGestureRecognizer) {
+        switch(gesture.state) {
+        case UIGestureRecognizerState.began:
+            reorderDelegate?.began(gesture)
+        case UIGestureRecognizerState.changed:
+            reorderDelegate?.changed(gesture)
+        case UIGestureRecognizerState.ended:
+            reorderDelegate?.end(gesture)
+        default:
+            reorderDelegate?.cancel(gesture)
+        }
+    }
 }

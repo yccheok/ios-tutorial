@@ -107,7 +107,7 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
 
 }
 
-extension TabInfoSettingsController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension TabInfoSettingsController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredTabInfos?.count ?? 0
     }
@@ -115,6 +115,7 @@ extension TabInfoSettingsController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let tabInfoSettingsItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsItemCellClassName, for: indexPath) as? TabInfoSettingsItemCell {
             tabInfoSettingsItemCell.delegate = self
+            tabInfoSettingsItemCell.reorderDelegate = self
             tabInfoSettingsItemCell.textField.text = filteredTabInfos?[indexPath.row].getPageTitle()
             return tabInfoSettingsItemCell
         }
@@ -133,13 +134,6 @@ extension TabInfoSettingsController: UICollectionViewDelegate, UICollectionViewD
             fatalError()
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    }
 }
 
 extension TabInfoSettingsController: TabInfoSettingsItemCellDelegate {
@@ -155,5 +149,53 @@ extension TabInfoSettingsController: TabInfoSettingsItemCellDelegate {
             
             self.collectionView.deleteItems(at: [indexPath])
         }
+    }
+}
+
+extension TabInfoSettingsController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("moveItemAt sourceIndexPath -> \(sourceIndexPath)")
+        print("moveItemAt destinationIndexPath -> \(destinationIndexPath)")
+        
+        viewController?.moveTabInfo(at: sourceIndexPath, to: destinationIndexPath)
+        
+        self.collectionView.moveItem(at: sourceIndexPath, to: destinationIndexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        print("canMoveItemAt!")
+        return true
+    }
+}
+
+extension TabInfoSettingsController: ReorderDelegate {
+    func began(_ gesture: UILongPressGestureRecognizer) {
+        print("==began==")
+        
+        guard let selectedIndexPath = self.collectionView?.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
+            return
+        }
+        
+        let flag = collectionView?.beginInteractiveMovementForItem(at: selectedIndexPath)
+        
+        print("==began== selectedIndexPath -> \(selectedIndexPath), flag -> \(flag)")
+    }
+    
+    func changed(_ gesture: UILongPressGestureRecognizer) {
+        print("==changed==")
+        collectionView?.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+    }
+    
+    func end(_ gesture: UILongPressGestureRecognizer) {
+        print("==end==")
+        collectionView?.endInteractiveMovement()
+    }
+    
+    func cancel(_ gesture: UILongPressGestureRecognizer) {
+        print("==cancel==")
+        collectionView?.cancelInteractiveMovement()
     }
 }

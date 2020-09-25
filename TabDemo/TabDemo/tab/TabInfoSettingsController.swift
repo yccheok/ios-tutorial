@@ -176,7 +176,9 @@ extension TabInfoSettingsController: ReorderDelegate {
     func began(_ gesture: UILongPressGestureRecognizer) {
         print("==began==")
         
-        guard let selectedIndexPath = self.collectionView?.indexPathForItem(at: gesture.location(in: self.collectionView)) else {
+        let location = gesture.location(in: self.collectionView)
+        
+        guard let selectedIndexPath = self.collectionView?.indexPathForItem(at: location) else {
             return
         }
         

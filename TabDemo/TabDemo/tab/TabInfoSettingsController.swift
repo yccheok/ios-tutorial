@@ -8,6 +8,30 @@
 
 import UIKit
 
+func shadow(_ view: UIView) {
+    view.layer.cornerRadius = 0
+    view.layer.shadowColor = UIColor.black.cgColor
+    view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0);
+    view.layer.shadowOpacity = 0.3
+    view.layer.shadowRadius = 4.0
+    view.layer.masksToBounds = false
+}
+
+func unShadow(_ view: UIView) {
+    view.layer.masksToBounds = true
+}
+
+class ReorderCompositionalLayout : UICollectionViewCompositionalLayout {
+    override func layoutAttributesForInteractivelyMovingItem(at indexPath: IndexPath, withTargetPosition position: CGPoint) -> UICollectionViewLayoutAttributes {
+        let attributes = super.layoutAttributesForInteractivelyMovingItem(at: indexPath as IndexPath, withTargetPosition: position)
+        
+        //attributes.alpha = 0.7
+        //attributes.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+
+        return attributes
+    }
+}
+
 class TabInfoSettingsController: UIViewController, TabInfoable {
     private static let tabInfoSettingsItemCellClassName = String(describing: TabInfoSettingsItemCell.self)
     private static let tabInfoSettingsFooterCellClassName = String(describing: TabInfoSettingsFooterCell.self)
@@ -16,6 +40,8 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
     
     var tabInfo: TabInfo?
        
+    var movingIndexPath: IndexPath?
+    
     var viewController: ViewController? {
         if let parent = self.parent?.parent as? ViewController {
             return parent
@@ -51,7 +77,7 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
         configuration.scrollDirection = .vertical
         
-        return UICollectionViewCompositionalLayout (sectionProvider: { (sectionNumber, env) -> NSCollectionLayoutSection? in
+        return ReorderCompositionalLayout (sectionProvider: { (sectionNumber, env) -> NSCollectionLayoutSection? in
             let itemSize = NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
                 heightDimension: .absolute(CGFloat(Constants.TAB_INFO_SETTINGS_CELL_HEIGHT))
@@ -117,6 +143,13 @@ extension TabInfoSettingsController: UICollectionViewDataSource {
             tabInfoSettingsItemCell.delegate = self
             tabInfoSettingsItemCell.reorderDelegate = self
             tabInfoSettingsItemCell.textField.text = filteredTabInfos?[indexPath.row].getPageTitle()
+            
+            if indexPath.item == movingIndexPath?.item {
+                shadow(tabInfoSettingsItemCell)
+            } else {
+                unShadow(tabInfoSettingsItemCell)
+            }
+            
             return tabInfoSettingsItemCell
         }
         
@@ -138,13 +171,10 @@ extension TabInfoSettingsController: UICollectionViewDataSource {
 
 extension TabInfoSettingsController: TabInfoSettingsItemCellDelegate {
     func crossButtonClick(_ sender: UIButton) {
-        print("crossButtonClick happens")
-        
         let hitPoint = (sender as AnyObject).convert(CGPoint.zero, to: collectionView)
         if let indexPath = collectionView.indexPathForItem(at: hitPoint) {
             // use indexPath to get needed data
-            print("crossButtonClick row is -> \(indexPath.row)")
-            
+
             viewController?.deleteTabInfo(indexPath)
             
             self.collectionView.deleteItems(at: [indexPath])
@@ -157,9 +187,6 @@ extension TabInfoSettingsController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        print("moveItemAt sourceIndexPath -> \(sourceIndexPath)")
-        print("moveItemAt destinationIndexPath -> \(destinationIndexPath)")
-        
         viewController?.moveTabInfo(at: sourceIndexPath, to: destinationIndexPath)
         
         // FIXME: Use diff data source.
@@ -167,40 +194,56 @@ extension TabInfoSettingsController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        print("canMoveItemAt!")
         return true
     }
 }
 
 extension TabInfoSettingsController: ReorderDelegate {
     func began(_ gesture: UILongPressGestureRecognizer) {
-        print("==began==")
-        
         let location = gesture.location(in: self.collectionView)
         
-        guard let selectedIndexPath = self.collectionView?.indexPathForItem(at: location) else {
+        guard let indexPath = self.collectionView?.indexPathForItem(at: location) else {
             return
         }
         
-        let flag = collectionView?.beginInteractiveMovementForItem(at: selectedIndexPath)
+        guard let cell = collectionView.cellForItem(at: indexPath as IndexPath) as? TabInfoSettingsItemCell else {
+            return
+        }
         
-        print("==began== selectedIndexPath -> \(selectedIndexPath), flag -> \(flag)")
+        self.movingIndexPath = indexPath
+        
+        collectionView?.beginInteractiveMovementForItem(at: indexPath)
+
+        // Cast a shadow when cell being pressed.
+        shadow(cell)
+        
+        //UIView.animate(withDuration: 0.1, delay: 0.0, options: [.allowUserInteraction, .beginFromCurrentState], animations: { () -> Void in
+        //    cell.alpha = 0.7
+        //    cell.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        //}, completion: { finished in
+        //    shadow(cell)
+        //})
     }
-    
+
     func changed(_ gesture: UILongPressGestureRecognizer) {
-        print("==changed==")
         var location = gesture.location(in: collectionView)
+        
+        // Lock down the x position
+        // https://stackoverflow.com/questions/40116282/preventing-moving-uicollectionviewcell-by-its-center-when-dragging
         location.x = collectionView.frame.width / 2
+        
         collectionView?.updateInteractiveMovementTargetPosition(location)
     }
-    
+
     func end(_ gesture: UILongPressGestureRecognizer) {
-        print("==end==")
         collectionView?.endInteractiveMovement()
+        self.movingIndexPath = nil
+        
+        collectionView?.reloadData()
     }
     
     func cancel(_ gesture: UILongPressGestureRecognizer) {
-        print("==cancel==")
         collectionView?.cancelInteractiveMovement()
+        self.movingIndexPath = nil
     }
 }

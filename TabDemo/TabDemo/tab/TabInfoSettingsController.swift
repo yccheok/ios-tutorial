@@ -24,12 +24,22 @@ func unShadow(_ view: UIView) {
     view.layer.masksToBounds = true
 }
 
+func enlargeTransparent(_ view: UIView) {
+    view.transform = CGAffineTransform(scaleX: 1.01, y: 1.01)
+    view.alpha = 0.7
+}
+
+func unEnlargeTransparent(_ view: UIView) {
+    view.transform = CGAffineTransform.identity
+    view.alpha = 1.0
+}
+
 class ReorderCompositionalLayout : UICollectionViewCompositionalLayout {
     override func layoutAttributesForInteractivelyMovingItem(at indexPath: IndexPath, withTargetPosition position: CGPoint) -> UICollectionViewLayoutAttributes {
         let attributes = super.layoutAttributesForInteractivelyMovingItem(at: indexPath as IndexPath, withTargetPosition: position)
         
-        //attributes.alpha = 0.7
-        //attributes.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        attributes.alpha = 0.7
+        attributes.transform = CGAffineTransform(scaleX: 1.01, y: 1.01)
 
         return attributes
     }
@@ -149,8 +159,12 @@ extension TabInfoSettingsController: UICollectionViewDataSource {
             
             if indexPath.item == movingIndexPath?.item {
                 shadow(tabInfoSettingsItemCell)
+
+                enlargeTransparent(tabInfoSettingsItemCell)
             } else {
                 unShadow(tabInfoSettingsItemCell)
+                
+                unEnlargeTransparent(tabInfoSettingsItemCell)
             }
             
             return tabInfoSettingsItemCell
@@ -219,6 +233,9 @@ extension TabInfoSettingsController: ReorderDelegate {
 
         // Cast a shadow when cell being pressed.
         shadow(cell)
+        
+        // Enlarge and transparent.
+        enlargeTransparent(cell)
         
         //UIView.animate(withDuration: 0.1, delay: 0.0, options: [.allowUserInteraction, .beginFromCurrentState], animations: { () -> Void in
         //    cell.alpha = 0.7

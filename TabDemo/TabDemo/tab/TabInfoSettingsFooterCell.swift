@@ -10,6 +10,8 @@ import UIKit
 
 class TabInfoSettingsFooterCell: UICollectionReusableView {
 
+    @IBOutlet weak var label: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

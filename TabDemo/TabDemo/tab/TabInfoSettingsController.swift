@@ -70,6 +70,38 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
         return self.viewController?.tabInfos.filter({ $0.type != TabInfoType.Settings })
     }
     
+    func makeDataSource() -> DataSource {
+        let dataSource = DataSource(
+            collectionView: collectionView,
+            cellProvider: { (collectionView, indexPath, tabInfo) -> UICollectionViewCell? in
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsItemCellClassName,
+                    for: indexPath) as? TabInfoSettingsItemCell
+                
+                cell?.textField.text = tabInfo.getPageTitle()
+                return cell
+            }
+        )
+        
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            guard kind == UICollectionView.elementKindSectionFooter else {
+                return nil
+            }
+        
+            let section = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            let footer = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsFooterCellClassName,
+                for: indexPath) as? TabInfoSettingsFooterCell
+            
+            footer?.label.text = section.footer
+            
+            return footer
+        }
+        
+        return dataSource
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

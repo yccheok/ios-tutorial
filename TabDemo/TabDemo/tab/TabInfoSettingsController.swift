@@ -56,7 +56,9 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var tabInfo: TabInfo?
-       
+    
+    var dataSource: DataSource?
+    
     var movingIndexPath: IndexPath?
     
     var viewController: ViewController? {
@@ -66,20 +68,32 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
         return nil
     }
     
-    var filteredTabInfos: [TabInfo]? {
-        return self.viewController?.tabInfos.filter({ $0.type != TabInfoType.Settings })
+    var filteredSection: TabInfoSection {
+        guard let viewController = self.viewController else {
+            return TabInfoSection(tabInfos: [], footer: "")
+        }
+        
+        return TabInfoSection(
+            tabInfos: viewController.tabInfos.filter({ $0.type != TabInfoType.Settings }),
+            footer: "This is footer"
+        )
     }
     
     func makeDataSource() -> DataSource {
         let dataSource = DataSource(
             collectionView: collectionView,
             cellProvider: { (collectionView, indexPath, tabInfo) -> UICollectionViewCell? in
-                let cell = collectionView.dequeueReusableCell(
+                guard let tabInfoSettingsItemCell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsItemCellClassName,
-                    for: indexPath) as? TabInfoSettingsItemCell
+                    for: indexPath) as? TabInfoSettingsItemCell else {
+                    return nil
+                }
                 
-                cell?.textField.text = tabInfo.getPageTitle()
-                return cell
+                tabInfoSettingsItemCell.delegate = self
+                tabInfoSettingsItemCell.reorderDelegate = self
+                tabInfoSettingsItemCell.textField.text = tabInfo.getPageTitle()
+                
+                return tabInfoSettingsItemCell
             }
         )
         
@@ -89,17 +103,33 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
             }
         
             let section = dataSource.snapshot().sectionIdentifiers[indexPath.section]
-            let footer = collectionView.dequeueReusableSupplementaryView(
+            
+            guard let tabInfoSettingsFooterCell = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
                 withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsFooterCellClassName,
-                for: indexPath) as? TabInfoSettingsFooterCell
+                for: indexPath) as? TabInfoSettingsFooterCell else {
+                
+                return nil
+            }
             
-            footer?.label.text = section.footer
+            tabInfoSettingsFooterCell.label.text = section.footer
             
-            return footer
+            return tabInfoSettingsFooterCell
         }
         
         return dataSource
+    }
+
+    func applySnapshot(_ animatingDifferences: Bool) {
+        var snapshot = Snapshot()
+
+        let section = filteredSection;
+        
+        snapshot.appendSections([section])
+
+        snapshot.appendItems(section.tabInfos, toSection: section)
+
+        dataSource?.apply(snapshot, animatingDifferences: animatingDifferences)
     }
 
     override func viewDidLoad() {
@@ -119,7 +149,11 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
         )
         
         collectionView.delegate = self
-        collectionView.dataSource = self
+        
+        //collectionView.dataSource = self
+        self.dataSource = makeDataSource()
+        
+        applySnapshot(false)
     }
     
     private func layoutConfig() -> UICollectionViewCompositionalLayout {
@@ -182,6 +216,7 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
 
 }
 
+/*
 extension TabInfoSettingsController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredTabInfos?.count ?? 0
@@ -221,6 +256,7 @@ extension TabInfoSettingsController: UICollectionViewDataSource {
         }
     }
 }
+*/
 
 extension TabInfoSettingsController: TabInfoSettingsItemCellDelegate {
     func crossButtonClick(_ sender: UIButton) {
@@ -228,9 +264,14 @@ extension TabInfoSettingsController: TabInfoSettingsItemCellDelegate {
         if let indexPath = collectionView.indexPathForItem(at: hitPoint) {
             // use indexPath to get needed data
 
+            // Remove from single source of truth.
             viewController?.deleteTabInfo(indexPath)
-            
-            self.collectionView.deleteItems(at: [indexPath])
+
+            //
+            // Perform UI updating.
+            //
+            //self.collectionView.deleteItems(at: [indexPath])
+            applySnapshot(true)
         }
     }
 }

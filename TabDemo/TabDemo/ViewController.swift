@@ -20,6 +20,9 @@ class ViewController: UIViewController {
     
     private var originalSize: CGSize?
     
+    //
+    // Single source of truth.
+    //
     // TODO: String localization.
     var tabInfos = [
         TabInfo(id: 0, type: .All, name: nil, colorIndex: 0),

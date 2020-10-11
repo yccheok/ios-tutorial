@@ -37,14 +37,7 @@ struct TabInfo {
     }
 }
 
-extension TabInfo: Equatable {
-    static func == (lhs: TabInfo, rhs: TabInfo) -> Bool {
-        return
-            lhs.type == rhs.type &&
-            lhs.name == rhs.name &&
-            lhs.colorIndex == rhs.colorIndex
-        
-    }
+extension TabInfo: Hashable {
 }
 
 extension TabInfo {

@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+struct TabInfoSection {
+    var tabInfos: [TabInfo]
+    var footer: String
+}
+
+extension TabInfoSection: Hashable {
+}

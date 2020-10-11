@@ -46,6 +46,10 @@ class ReorderCompositionalLayout : UICollectionViewCompositionalLayout {
 }
 
 class TabInfoSettingsController: UIViewController, TabInfoable {
+    // MARK: - Value Types
+    typealias DataSource = UICollectionViewDiffableDataSource<TabInfoSection, TabInfo>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<TabInfoSection, TabInfo>
+    
     private static let tabInfoSettingsItemCellClassName = String(describing: TabInfoSettingsItemCell.self)
     private static let tabInfoSettingsFooterCellClassName = String(describing: TabInfoSettingsFooterCell.self)
     

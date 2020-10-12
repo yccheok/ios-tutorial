@@ -257,15 +257,20 @@ extension TabInfoSettingsController: UICollectionViewDataSource {
 }
 */
 
+var footerValue = 100
+
 extension TabInfoSettingsController: TabInfoSettingsItemCellDelegate {
     func crossButtonClick(_ sender: UIButton) {
         let hitPoint = (sender as AnyObject).convert(CGPoint.zero, to: collectionView)
         if let indexPath = collectionView.indexPathForItem(at: hitPoint) {
             // use indexPath to get needed data
 
-            // Remove from single source of truth.
-            viewController?.deleteTabInfo(indexPath)
+            //// Remove from single source of truth.
+            ////viewController?.deleteTabInfo(indexPath)
 
+            footerValue = footerValue + 1
+            tabInfoSection.footer = String(footerValue)
+            
             //
             // Perform UI updating.
             //

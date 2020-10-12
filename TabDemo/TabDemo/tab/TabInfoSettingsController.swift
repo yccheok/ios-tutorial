@@ -68,15 +68,14 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
         return nil
     }
     
-    var filteredSection: TabInfoSection {
+    var tabInfoSection = TabInfoSection(footer: "")
+    
+    var filteredTabInfos: [TabInfo] {
         guard let viewController = self.viewController else {
-            return TabInfoSection(tabInfos: [], footer: "")
+            return []
         }
         
-        return TabInfoSection(
-            tabInfos: viewController.tabInfos.filter({ $0.type != TabInfoType.Settings }),
-            footer: "This is footer"
-        )
+        return viewController.tabInfos.filter({ $0.type != TabInfoType.Settings })
     }
     
     func makeDataSource() -> DataSource {
@@ -123,11 +122,11 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
     func applySnapshot(_ animatingDifferences: Bool) {
         var snapshot = Snapshot()
 
-        let section = filteredSection;
+        let section = tabInfoSection;
         
         snapshot.appendSections([section])
 
-        snapshot.appendItems(section.tabInfos, toSection: section)
+        snapshot.appendItems(filteredTabInfos, toSection: section)
 
         dataSource?.apply(snapshot, animatingDifferences: animatingDifferences)
     }

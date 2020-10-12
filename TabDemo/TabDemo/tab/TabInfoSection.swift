@@ -9,7 +9,8 @@
 import Foundation
 
 struct TabInfoSection {
-    var tabInfos: [TabInfo]
+    // Do not include content items [TabInfo] as member of Section. If not, any mutable operation performed on content items, will
+    // misguide Diff framework to throw away entire current Section, and replace it with new Section. This causes flickering effect.
     var footer: String
 }
 

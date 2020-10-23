@@ -93,6 +93,17 @@ class ViewController: UIViewController {
         }
     }
     
+    func moveTabInfo(_ collectionDifference: CollectionDifference<TabInfo>) {  
+        tabInfos = tabInfos.applying(collectionDifference)!
+
+        // FIXME:
+        tabCollectionView.reloadData()
+        
+        // Clear left/ right cached view controllers - https://stackoverflow.com/a/21624169/72437
+        pageViewController.dataSource = nil
+        pageViewController.dataSource = self
+    }
+    
     func moveTabInfo(at indexPath: IndexPath, to newIndexPath: IndexPath) {
         let temp = tabInfos[indexPath.item]
         tabInfos.remove(at: indexPath.item)

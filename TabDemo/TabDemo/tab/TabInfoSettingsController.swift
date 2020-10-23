@@ -81,7 +81,9 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
     func makeDataSource() -> DataSource {
         let dataSource = DataSource(
             collectionView: collectionView,
-            cellProvider: { (collectionView, indexPath, tabInfo) -> UICollectionViewCell? in
+            cellProvider: { [weak self] (collectionView, indexPath, tabInfo) -> UICollectionViewCell? in
+                guard let self = self else { return nil }
+                
                 guard let tabInfoSettingsItemCell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsItemCellClassName,
                     for: indexPath) as? TabInfoSettingsItemCell else {
@@ -91,6 +93,16 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
                 tabInfoSettingsItemCell.delegate = self
                 tabInfoSettingsItemCell.reorderDelegate = self
                 tabInfoSettingsItemCell.textField.text = tabInfo.getPageTitle()
+                
+                if indexPath.item == self.movingIndexPath?.item {
+                    shadow(tabInfoSettingsItemCell)
+
+                    enlargeTransparent(tabInfoSettingsItemCell)
+                } else {
+                    unShadow(tabInfoSettingsItemCell)
+                    
+                    unEnlargeTransparent(tabInfoSettingsItemCell)
+                }
                 
                 return tabInfoSettingsItemCell
             }
@@ -114,6 +126,16 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
             tabInfoSettingsFooterCell.label.text = section.footer
             
             return tabInfoSettingsFooterCell
+        }
+
+        dataSource.reorderingHandlers.canReorderItem = { identifierType in
+            return true
+        }
+        
+        dataSource.reorderingHandlers.didReorder = { [weak self] transaction in
+            guard let self = self else { return }
+
+            self.viewController?.moveTabInfo(transaction.difference)
         }
         
         return dataSource
@@ -147,9 +169,6 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
             withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsFooterCellClassName
         )
         
-        collectionView.delegate = self
-        
-        //collectionView.dataSource = self
         self.dataSource = makeDataSource()
         
         applySnapshot(false)
@@ -217,6 +236,10 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
 
 /*
 extension TabInfoSettingsController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+ 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredTabInfos?.count ?? 0
     }
@@ -275,6 +298,7 @@ extension TabInfoSettingsController: TabInfoSettingsItemCellDelegate {
     }
 }
 
+/*
 extension TabInfoSettingsController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
@@ -285,11 +309,8 @@ extension TabInfoSettingsController: UICollectionViewDelegate {
         // FIXME: Use diff data source.
         self.collectionView.reloadData()
     }
-    
-    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
 }
+*/
 
 extension TabInfoSettingsController: ReorderDelegate {
     func began(_ gesture: UILongPressGestureRecognizer) {
@@ -333,13 +354,31 @@ extension TabInfoSettingsController: ReorderDelegate {
 
     func end(_ gesture: UILongPressGestureRecognizer) {
         collectionView?.endInteractiveMovement()
-        self.movingIndexPath = nil
         
-        collectionView?.reloadData()
+        if let movingIndexPath = self.movingIndexPath, let cell = collectionView.cellForItem(at: movingIndexPath as IndexPath) as? TabInfoSettingsItemCell {
+            unShadow(cell)
+            
+            unEnlargeTransparent(cell)
+        }
+        
+        self.movingIndexPath = nil
+
+        // Cancel unwanted animation when dropping the cell.
+        applySnapshot(false)
     }
     
     func cancel(_ gesture: UILongPressGestureRecognizer) {
         collectionView?.cancelInteractiveMovement()
+        
+        if let movingIndexPath = self.movingIndexPath, let cell = collectionView.cellForItem(at: movingIndexPath as IndexPath) as? TabInfoSettingsItemCell {
+            unShadow(cell)
+            
+            unEnlargeTransparent(cell)
+        }
+        
         self.movingIndexPath = nil
+
+        // Cancel unwanted animation when dropping the cell.
+        applySnapshot(false)
     }
 }

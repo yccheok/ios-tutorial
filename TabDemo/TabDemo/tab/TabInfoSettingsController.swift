@@ -46,12 +46,15 @@ class ReorderCompositionalLayout : UICollectionViewCompositionalLayout {
 }
 
 class TabInfoSettingsController: UIViewController, TabInfoable {
+    enum Section: CaseIterable {
+        case main
+    }
+    
     // MARK: - Value Types
-    typealias DataSource = UICollectionViewDiffableDataSource<TabInfoSection, TabInfo>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<TabInfoSection, TabInfo>
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, TabInfo>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, TabInfo>
     
     private static let tabInfoSettingsItemCellClassName = String(describing: TabInfoSettingsItemCell.self)
-    private static let tabInfoSettingsFooterCellClassName = String(describing: TabInfoSettingsFooterCell.self)
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -67,8 +70,6 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
         }
         return nil
     }
-    
-    var tabInfoSection = TabInfoSection(footer: "")
     
     var filteredTabInfos: [TabInfo] {
         guard let viewController = self.viewController else {
@@ -107,26 +108,6 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
                 return tabInfoSettingsItemCell
             }
         )
-        
-        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
-            guard kind == UICollectionView.elementKindSectionFooter else {
-                return nil
-            }
-        
-            let section = dataSource.snapshot().sectionIdentifiers[indexPath.section]
-            
-            guard let tabInfoSettingsFooterCell = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsFooterCellClassName,
-                for: indexPath) as? TabInfoSettingsFooterCell else {
-                
-                return nil
-            }
-            
-            tabInfoSettingsFooterCell.label.text = section.footer
-            
-            return tabInfoSettingsFooterCell
-        }
 
         dataSource.reorderingHandlers.canReorderItem = { identifierType in
             return true
@@ -143,12 +124,10 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
 
     func applySnapshot(_ animatingDifferences: Bool) {
         var snapshot = Snapshot()
-
-        let section = tabInfoSection;
         
-        snapshot.appendSections([section])
+        snapshot.appendSections([.main])
 
-        snapshot.appendItems(filteredTabInfos, toSection: section)
+        snapshot.appendItems(filteredTabInfos, toSection: .main)
 
         dataSource?.apply(snapshot, animatingDifferences: animatingDifferences)
     }
@@ -161,12 +140,6 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
         collectionView.register(
             UINib(nibName: TabInfoSettingsController.tabInfoSettingsItemCellClassName, bundle: nil),
             forCellWithReuseIdentifier: TabInfoSettingsController.tabInfoSettingsItemCellClassName
-        )
-        
-        collectionView.register(
-            UINib(nibName: TabInfoSettingsController.tabInfoSettingsFooterCellClassName, bundle: nil),
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
-            withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsFooterCellClassName
         )
         
         self.dataSource = makeDataSource()
@@ -191,17 +164,6 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
             section.interGroupSpacing = 0
-            
-            let footerSize = NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1.0),
-                heightDimension: .absolute(CGFloat(Constants.TAB_INFO_SETTINGS_CELL_HEIGHT))
-            )
-            let sectionFooter = NSCollectionLayoutBoundarySupplementaryItem(
-                layoutSize: footerSize,
-                elementKind: UICollectionView.elementKindSectionFooter,
-                alignment: .bottom
-            )
-            section.boundarySupplementaryItems = [sectionFooter]
             
             return section
         }, configuration: configuration)
@@ -231,54 +193,7 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
-
-/*
-extension TabInfoSettingsController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
- 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filteredTabInfos?.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let tabInfoSettingsItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsItemCellClassName, for: indexPath) as? TabInfoSettingsItemCell {
-            tabInfoSettingsItemCell.delegate = self
-            tabInfoSettingsItemCell.reorderDelegate = self
-            tabInfoSettingsItemCell.textField.text = filteredTabInfos?[indexPath.row].getPageTitle()
-            
-            if indexPath.item == movingIndexPath?.item {
-                shadow(tabInfoSettingsItemCell)
-
-                enlargeTransparent(tabInfoSettingsItemCell)
-            } else {
-                unShadow(tabInfoSettingsItemCell)
-                
-                unEnlargeTransparent(tabInfoSettingsItemCell)
-            }
-            
-            return tabInfoSettingsItemCell
-        }
-        
-        return UICollectionViewCell()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
-        switch kind {
-        case UICollectionView.elementKindSectionFooter:
-            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TabInfoSettingsController.tabInfoSettingsFooterCellClassName, for: indexPath)
-            return footerView
-
-        default:
-            fatalError()
-        }
-    }
-}
-*/
 
 extension TabInfoSettingsController: TabInfoSettingsItemCellDelegate {
     func crossButtonClick(_ sender: UIButton) {
@@ -297,20 +212,6 @@ extension TabInfoSettingsController: TabInfoSettingsItemCellDelegate {
         }
     }
 }
-
-/*
-extension TabInfoSettingsController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        viewController?.moveTabInfo(at: sourceIndexPath, to: destinationIndexPath)
-        
-        // FIXME: Use diff data source.
-        self.collectionView.reloadData()
-    }
-}
-*/
 
 extension TabInfoSettingsController: ReorderDelegate {
     func began(_ gesture: UILongPressGestureRecognizer) {

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0DBD551325333E7A00F0504E /* TabInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBD551225333E7A00F0504E /* TabInfoSection.swift */; };
 		9447F3CE250A2EEA005FF401 /* TabInfoSettingsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9447F3CC250A2EEA005FF401 /* TabInfoSettingsItemCell.swift */; };
 		9447F3CF250A2EEA005FF401 /* TabInfoSettingsItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9447F3CD250A2EEA005FF401 /* TabInfoSettingsItemCell.xib */; };
 		944E6C752505001500FE68A1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 944E6C742505001500FE68A1 /* UIColor+Extension.swift */; };
@@ -66,7 +65,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0DBD551225333E7A00F0504E /* TabInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfoSection.swift; sourceTree = "<group>"; };
 		9447F3CC250A2EEA005FF401 /* TabInfoSettingsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabInfoSettingsItemCell.swift; sourceTree = "<group>"; };
 		9447F3CD250A2EEA005FF401 /* TabInfoSettingsItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabInfoSettingsItemCell.xib; sourceTree = "<group>"; };
 		944E6C742505001500FE68A1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 				94F543E0250F0408007F81CE /* TabInfoSettingsFooterCell.xib */,
 				948131FE250F41C70067072A /* TabInfoSettingsItemCellDelegate.swift */,
 				94829E8F25183655004CCCF6 /* ReorderDelegate.swift */,
-				0DBD551225333E7A00F0504E /* TabInfoSection.swift */,
 			);
 			path = tab;
 			sourceTree = "<group>";
@@ -445,7 +442,6 @@
 				9480B91C2508E9FB002DB858 /* CalendarController.swift in Sources */,
 				94E9B8C72500FA2100B0D0FC /* ThemeManager.swift in Sources */,
 				947785572505F87300CF8A0C /* PageViewController.swift in Sources */,
-				0DBD551325333E7A00F0504E /* TabInfoSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

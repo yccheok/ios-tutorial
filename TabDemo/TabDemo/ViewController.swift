@@ -9,6 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+    enum Section: CaseIterable {
+        case main
+    }
+    
+    // MARK: - Value Types
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, TabInfo>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, TabInfo>
+    
+    var dataSource: DataSource?
+    
     private let tabInfoCellClassName = String(describing: TabInfoCell.self)
     
     @IBOutlet weak var tabCollectionView: UICollectionView!
@@ -44,6 +54,39 @@ class ViewController: UIViewController {
         TabInfo(id: 16, type: .Settings, name: nil, colorIndex: 16)
     ]
     
+    func makeDataSource() -> DataSource {
+        let dataSource = DataSource(
+            collectionView: tabCollectionView,
+            cellProvider: { [weak self] (collectionView, indexPath, tabInfo) -> UICollectionViewCell? in
+                guard let self = self else { return nil }
+                
+                guard let tabInfoCell = collectionView.dequeueReusableCell(
+                        withReuseIdentifier: self.tabInfoCellClassName,
+                    for: indexPath) as? TabInfoCell else {
+                    return nil
+                }
+                
+                let tabInfo = self.tabInfos[indexPath.row]
+                let selected = indexPath.row == self.selectedTabInfoIndex
+                tabInfoCell.update(tabInfo, selected)
+                
+                return tabInfoCell
+            }
+        )
+        
+        return dataSource
+    }
+    
+    func applySnapshot(_ animatingDifferences: Bool) {
+        var snapshot = Snapshot()
+        
+        snapshot.appendSections([.main])
+
+        snapshot.appendItems(tabInfos, toSection: .main)
+
+        dataSource?.apply(snapshot, animatingDifferences: animatingDifferences)
+    }
+    
     private func getIndex(_ tabInfo: TabInfo?) -> Int {
         guard let tabInfo = tabInfo else {
             return -1
@@ -65,9 +108,11 @@ class ViewController: UIViewController {
         
         tabCollectionView.showsHorizontalScrollIndicator = false
         tabCollectionView.showsVerticalScrollIndicator = false
-        
+
         tabCollectionView.delegate = self
-        tabCollectionView.dataSource = self
+        
+        self.dataSource = makeDataSource()
+        applySnapshot(false)
         
         pageViewController.delegate = self
         pageViewController.dataSource = self
@@ -81,7 +126,7 @@ class ViewController: UIViewController {
     func deleteTabInfo(_ indexPath: IndexPath) {
         tabInfos.remove(at: indexPath.row)
         
-        tabCollectionView.deleteItems(at: [indexPath])
+        applySnapshot(true)
         
         // Clear left/ right cached view controllers - https://stackoverflow.com/a/21624169/72437
         pageViewController.dataSource = nil
@@ -96,8 +141,7 @@ class ViewController: UIViewController {
     func moveTabInfo(_ collectionDifference: CollectionDifference<TabInfo>) {  
         tabInfos = tabInfos.applying(collectionDifference)!
 
-        // FIXME:
-        tabCollectionView.reloadData()
+        applySnapshot(true)
         
         // Clear left/ right cached view controllers - https://stackoverflow.com/a/21624169/72437
         pageViewController.dataSource = nil
@@ -109,7 +153,7 @@ class ViewController: UIViewController {
         tabInfos.remove(at: indexPath.item)
         tabInfos.insert(temp, at: newIndexPath.item)
         
-        tabCollectionView.moveItem(at: indexPath, to: newIndexPath)
+        applySnapshot(true)
         
         // Clear left/ right cached view controllers - https://stackoverflow.com/a/21624169/72437
         pageViewController.dataSource = nil
@@ -198,22 +242,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tabInfos.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let tabCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: tabInfoCellClassName, for: indexPath) as? TabInfoCell {
-            let tabInfo = tabInfos[indexPath.row]
-            let selected = indexPath.row == self.selectedTabInfoIndex
-            tabCollectionViewCell.update(tabInfo, selected)
-            return tabCollectionViewCell
-        }
-        
-        return UICollectionViewCell()
-    }
-    
+extension ViewController: UICollectionViewDelegate {
     private func shouldSetViewControllers() -> Bool {
         guard let viewControllers = self.pageViewController.viewControllers else { return true }
         guard viewControllers.count > 0 else { return true }
@@ -234,31 +263,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         if shouldSetViewControllers() {
             self.pageViewController.setViewControllers([viewController(At: self.selectedTabInfoIndex)!], direction: direction, animated: true, completion: nil)
             self.tabCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        }
-    }
-    
-    func debug() {
-        if tabInfos.count < 2 {
-            return
-        }
-        
-        let index = tabInfos.count-2
-        tabInfos.remove(at: index)
-
-        self.tabCollectionView.reloadData()
-        DispatchQueue.main.async() {
-            let indexPath = self.getIndexPath(self.tabInfos.count-1)
-            self.tabCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredVertically)
-            self.tabCollectionView.scrollToItem(at: indexPath, at: .right, animated: true)
-        }
-
-        // Clear left/ right cached view controllers - https://stackoverflow.com/a/21624169/72437
-        pageViewController.dataSource = nil
-        pageViewController.dataSource = self
-
-        // Don't forget to adjust the selection index.
-        if index < self.selectedTabInfoIndex {
-            selectedTabInfoIndex -= 1
         }
     }
 }

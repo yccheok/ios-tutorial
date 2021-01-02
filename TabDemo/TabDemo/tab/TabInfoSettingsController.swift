@@ -94,6 +94,7 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
                 tabInfoSettingsItemCell.delegate = self
                 tabInfoSettingsItemCell.reorderDelegate = self
                 tabInfoSettingsItemCell.textField.text = tabInfo.getPageTitle()
+                tabInfoSettingsItemCell.circleView.backgroundColor = tabInfo.getUIColor()
                 
                 if indexPath.item == self.movingIndexPath?.item {
                     shadow(tabInfoSettingsItemCell)
@@ -145,6 +146,20 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
         self.dataSource = makeDataSource()
         
         applySnapshot(false)
+        
+        
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+
+        collectionView.contentOffset = CGPoint(x: self.collectionView.contentOffset.x, y: 190)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
     }
     
     private func layoutConfig() -> UICollectionViewCompositionalLayout {
@@ -209,6 +224,8 @@ extension TabInfoSettingsController: TabInfoSettingsItemCellDelegate {
             //
             //self.collectionView.deleteItems(at: [indexPath])
             applySnapshot(true)
+            
+            print("contentOffset -> \(collectionView.contentOffset.y)")
         }
     }
 }

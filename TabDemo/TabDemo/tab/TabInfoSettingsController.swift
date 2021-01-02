@@ -146,20 +146,6 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
         self.dataSource = makeDataSource()
         
         applySnapshot(false)
-        
-        
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-
-        collectionView.contentOffset = CGPoint(x: self.collectionView.contentOffset.x, y: 190)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
     }
     
     private func layoutConfig() -> UICollectionViewCompositionalLayout {

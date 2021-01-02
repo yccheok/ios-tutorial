@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		0D1D15D825A02BE100AB20F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1D15D725A02BE100AB20F4 /* AppDelegate.swift */; };
 		0D1D15DA25A02BE100AB20F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1D15D925A02BE100AB20F4 /* SceneDelegate.swift */; };
-		0D1D15DC25A02BE100AB20F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1D15DB25A02BE100AB20F4 /* ViewController.swift */; };
 		0D1D15DF25A02BE100AB20F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D1D15DD25A02BE100AB20F4 /* Main.storyboard */; };
 		0D1D15E125A02BE200AB20F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D1D15E025A02BE200AB20F4 /* Assets.xcassets */; };
 		0D1D15E425A02BE200AB20F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D1D15E225A02BE200AB20F4 /* LaunchScreen.storyboard */; };
+		0D1D15ED25A02D9600AB20F4 /* YellowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1D15EC25A02D9600AB20F4 /* YellowViewController.swift */; };
+		0D1D15F025A02F0300AB20F4 /* RedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1D15EF25A02F0300AB20F4 /* RedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0D1D15D425A02BE100AB20F4 /* NavigationController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavigationController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D1D15D725A02BE100AB20F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D1D15D925A02BE100AB20F4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0D1D15DB25A02BE100AB20F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0D1D15DE25A02BE100AB20F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0D1D15E025A02BE200AB20F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D1D15E325A02BE200AB20F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D1D15E525A02BE200AB20F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D1D15EC25A02D9600AB20F4 /* YellowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowViewController.swift; sourceTree = "<group>"; };
+		0D1D15EF25A02F0300AB20F4 /* RedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +60,12 @@
 			children = (
 				0D1D15D725A02BE100AB20F4 /* AppDelegate.swift */,
 				0D1D15D925A02BE100AB20F4 /* SceneDelegate.swift */,
-				0D1D15DB25A02BE100AB20F4 /* ViewController.swift */,
 				0D1D15DD25A02BE100AB20F4 /* Main.storyboard */,
 				0D1D15E025A02BE200AB20F4 /* Assets.xcassets */,
 				0D1D15E225A02BE200AB20F4 /* LaunchScreen.storyboard */,
 				0D1D15E525A02BE200AB20F4 /* Info.plist */,
+				0D1D15EC25A02D9600AB20F4 /* YellowViewController.swift */,
+				0D1D15EF25A02F0300AB20F4 /* RedViewController.swift */,
 			);
 			path = NavigationController;
 			sourceTree = "<group>";
@@ -137,7 +140,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D1D15DC25A02BE100AB20F4 /* ViewController.swift in Sources */,
+				0D1D15F025A02F0300AB20F4 /* RedViewController.swift in Sources */,
+				0D1D15ED25A02D9600AB20F4 /* YellowViewController.swift in Sources */,
 				0D1D15D825A02BE100AB20F4 /* AppDelegate.swift in Sources */,
 				0D1D15DA25A02BE100AB20F4 /* SceneDelegate.swift in Sources */,
 			);

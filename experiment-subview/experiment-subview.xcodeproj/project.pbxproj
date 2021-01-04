@@ -13,6 +13,10 @@
 		0DBD4A5725A29B7D00BCABFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DBD4A5525A29B7D00BCABFC /* Main.storyboard */; };
 		0DBD4A5925A29B7D00BCABFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DBD4A5825A29B7D00BCABFC /* Assets.xcassets */; };
 		0DBD4A5C25A29B7E00BCABFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DBD4A5A25A29B7E00BCABFC /* LaunchScreen.storyboard */; };
+		0DBD4A6A25A2A30C00BCABFC /* CustomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DBD4A6925A2A30C00BCABFC /* CustomView.xib */; };
+		0DBD4A6D25A2A34E00BCABFC /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBD4A6C25A2A34E00BCABFC /* CustomView.swift */; };
+		0DBD4A7025A2A56500BCABFC /* CustomView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DBD4A6F25A2A56500BCABFC /* CustomView2.xib */; };
+		0DBD4A7325A2A57700BCABFC /* CustomView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBD4A7225A2A57700BCABFC /* CustomView2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		0DBD4A5825A29B7D00BCABFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DBD4A5B25A29B7E00BCABFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DBD4A5D25A29B7E00BCABFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0DBD4A6925A2A30C00BCABFC /* CustomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomView.xib; sourceTree = "<group>"; };
+		0DBD4A6C25A2A34E00BCABFC /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		0DBD4A6F25A2A56500BCABFC /* CustomView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomView2.xib; sourceTree = "<group>"; };
+		0DBD4A7225A2A57700BCABFC /* CustomView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +71,10 @@
 				0DBD4A5825A29B7D00BCABFC /* Assets.xcassets */,
 				0DBD4A5A25A29B7E00BCABFC /* LaunchScreen.storyboard */,
 				0DBD4A5D25A29B7E00BCABFC /* Info.plist */,
+				0DBD4A6925A2A30C00BCABFC /* CustomView.xib */,
+				0DBD4A6C25A2A34E00BCABFC /* CustomView.swift */,
+				0DBD4A6F25A2A56500BCABFC /* CustomView2.xib */,
+				0DBD4A7225A2A57700BCABFC /* CustomView2.swift */,
 			);
 			path = "experiment-subview";
 			sourceTree = "<group>";
@@ -125,6 +137,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DBD4A5C25A29B7E00BCABFC /* LaunchScreen.storyboard in Resources */,
+				0DBD4A7025A2A56500BCABFC /* CustomView2.xib in Resources */,
+				0DBD4A6A25A2A30C00BCABFC /* CustomView.xib in Resources */,
 				0DBD4A5925A29B7D00BCABFC /* Assets.xcassets in Resources */,
 				0DBD4A5725A29B7D00BCABFC /* Main.storyboard in Resources */,
 			);
@@ -138,8 +152,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DBD4A5425A29B7D00BCABFC /* ViewController.swift in Sources */,
+				0DBD4A6D25A2A34E00BCABFC /* CustomView.swift in Sources */,
 				0DBD4A5025A29B7D00BCABFC /* AppDelegate.swift in Sources */,
 				0DBD4A5225A29B7D00BCABFC /* SceneDelegate.swift in Sources */,
+				0DBD4A7325A2A57700BCABFC /* CustomView2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

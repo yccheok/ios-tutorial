@@ -55,8 +55,6 @@ class ViewController: UIViewController {
         }
 
         currentPosition = currentPosition + itemHeight + kItemInterval
-
-        itemContainerView.addSubview(customView2)
         
         let positionX: CGFloat = 0
         let positionY: CGFloat = targetBounds.minY + targetBounds.height - currentPosition - safeAreaBottom
@@ -66,6 +64,9 @@ class ViewController: UIViewController {
           y: positionY,
           width: targetBounds.width,
           height: currentPosition)
+
+        // It is important that we only call addSubview after initialize frame, to have proper sizing.
+        itemContainerView.addSubview(customView2)
         
         self.view.addSubview(self.itemContainerView)
         

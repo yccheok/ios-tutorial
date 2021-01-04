@@ -70,7 +70,6 @@ class ViewController: UIViewController {
         
         self.view.addSubview(self.itemContainerView)
         
-        /*
         self.itemContainerView.transform = CGAffineTransform(translationX: 0, y: currentPosition)
         UIView.animate(withDuration: 0.4,
           delay: 0,
@@ -79,7 +78,7 @@ class ViewController: UIViewController {
           options: .curveEaseOut,
           animations: { () -> Void in
             self.itemContainerView.transform = CGAffineTransform.identity
-          }, completion: nil)*/
+          }, completion: nil)
     }
 }
 

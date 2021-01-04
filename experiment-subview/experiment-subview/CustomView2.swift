@@ -9,6 +9,10 @@ import UIKit
 
 class CustomView2: UIView {
 
+    @IBAction func orangeButtonClick(_ sender: Any) {
+        print("orange button click")
+    }
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

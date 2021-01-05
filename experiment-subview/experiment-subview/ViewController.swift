@@ -8,7 +8,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    private let CIRCLE_VIEW = "CIRCLE_VIEW"
+    
+    var collectionView: UICollectionView?
+    
     let itemContainerView = UIView()
     let kItemInterval: CGFloat = 8
     let kMarginTop: CGFloat = 20
@@ -20,28 +23,68 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func changeColorClick(_ sender: Any) {
+        print("changeColorClick")
+    }
+    
+    private func initCollectionView(_ collectionViewWidth: CGFloat) -> UICollectionView {
+        let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        let minItemWidth: CGFloat = 56
+        let numberOfCell = collectionViewWidth / minItemWidth
+        let width = floor((numberOfCell / floor(numberOfCell)) * minItemWidth)
+        let height = width
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.itemSize = CGSize(width: width, height: height)
+        flowLayout.sectionInset = .zero
 
+        // Use 0 for height. We will adjust it later.
+        let frame = CGRect(
+            x: 0,
+            y: 0,
+            width: collectionViewWidth,
+            height: 0)
+        let collectionView = UICollectionView(frame: frame, collectionViewLayout: flowLayout)
+        
+        collectionView.register(CircleView.self, forCellWithReuseIdentifier: CIRCLE_VIEW)
+
+        collectionView.dataSource = self
+        
+        collectionView.backgroundColor = UIColor.clear
+
+        return collectionView
+    }
+    
     @IBAction func buttonClick(_ sender: Any) {
         print("click")
         
-        guard let customView2 = UINib(nibName: "CustomView2", bundle: nil).instantiate(withOwner: self, options: nil)[0] as? CustomView2 else {
-            return
-        }
-
-        var currentPosition: CGFloat = 0
-        
-        let itemHeight: CGFloat = 100
-        
         let targetBounds = self.view.bounds
         
-        customView2.frame = CGRect(
+        let collectionViewWidth = targetBounds.width - (kMarginSide * 2)
+        
+        let collectionView: UICollectionView
+        
+        if self.collectionView == nil {
+            self.collectionView = initCollectionView(collectionViewWidth)
+            collectionView = self.collectionView!
+        } else {
+            collectionView = self.collectionView!
+        }
+
+        // Use collectionView in rest of the code
+        
+        var currentPosition: CGFloat = 0
+        
+        let itemHeight: CGFloat = collectionView.collectionViewLayout.collectionViewContentSize.height
+        
+        collectionView.frame = CGRect(
             x: kMarginSide,
             y: currentPosition,
-            width: targetBounds.width - (kMarginSide * 2),
+            width: collectionViewWidth,
             height: itemHeight)
         
         for subview in self.itemContainerView.subviews {
-          subview.removeFromSuperview()
+            subview.removeFromSuperview()
         }
         
         let safeAreaTop: CGFloat
@@ -66,7 +109,7 @@ class ViewController: UIViewController {
           height: currentPosition)
 
         // It is important that we only call addSubview after initialize frame, to have proper sizing.
-        itemContainerView.addSubview(customView2)
+        itemContainerView.addSubview(collectionView)
         
         self.view.addSubview(self.itemContainerView)
         
@@ -82,3 +125,18 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController : UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 12
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CIRCLE_VIEW, for: indexPath) as! CircleView
+        
+        cell.color = UIColor.red
+        
+        return cell
+    }
+    
+    
+}

@@ -29,15 +29,18 @@ class ViewController: UIViewController {
     
     private func initCollectionView(_ collectionViewWidth: CGFloat) -> UICollectionView {
         let flowLayout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        let minItemWidth: CGFloat = 56
-        let numberOfCell = collectionViewWidth / minItemWidth
-        let width = floor((numberOfCell / floor(numberOfCell)) * minItemWidth)
+        flowLayout.minimumInteritemSpacing = 4
+        
+        let maxItemWidth: CGFloat = 56
+        let numberOfCell = collectionViewWidth / maxItemWidth
+        let effectiveCollectionViewWidth = (collectionViewWidth - (max(1, floor(numberOfCell))-1)*flowLayout.minimumInteritemSpacing*2)
+        let width = effectiveCollectionViewWidth / floor(numberOfCell)
         let height = width
-        flowLayout.minimumInteritemSpacing = 0
-        flowLayout.minimumLineSpacing = 0
+        
+        flowLayout.minimumLineSpacing = 8
         flowLayout.itemSize = CGSize(width: width, height: height)
-        flowLayout.sectionInset = .zero
-
+        flowLayout.sectionInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        
         // Use 0 for height. We will adjust it later.
         let frame = CGRect(
             x: 0,
@@ -51,7 +54,7 @@ class ViewController: UIViewController {
         collectionView.dataSource = self
         
         collectionView.backgroundColor = UIColor.clear
-
+        
         return collectionView
     }
     

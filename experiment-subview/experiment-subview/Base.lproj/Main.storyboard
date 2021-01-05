@@ -23,11 +23,20 @@
                                     <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HCF-kJ-6u4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rf8-EX-79p">
+                                <rect key="frame" x="246" y="44" width="94" height="30"/>
+                                <state key="normal" title="Change Color"/>
+                                <connections>
+                                    <action selector="changeColorClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0sy-eb-ecE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="i95-28-J4z" secondAttribute="top" id="Fjc-l0-Xiv"/>
+                            <constraint firstItem="Rf8-EX-79p" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NxL-To-H3E"/>
+                            <constraint firstItem="Rf8-EX-79p" firstAttribute="leading" secondItem="i95-28-J4z" secondAttribute="trailing" constant="16" id="zau-FA-bzz"/>
                             <constraint firstItem="i95-28-J4z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zhc-xC-yh3"/>
                         </constraints>
                     </view>

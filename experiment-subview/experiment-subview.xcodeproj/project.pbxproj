@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DBB2EA425A301A90061C204 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB2EA325A301A90061C204 /* CircleView.swift */; };
 		0DBD4A5025A29B7D00BCABFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBD4A4F25A29B7D00BCABFC /* AppDelegate.swift */; };
 		0DBD4A5225A29B7D00BCABFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBD4A5125A29B7D00BCABFC /* SceneDelegate.swift */; };
 		0DBD4A5425A29B7D00BCABFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBD4A5325A29B7D00BCABFC /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0DBB2EA325A301A90061C204 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		0DBD4A4C25A29B7D00BCABFC /* experiment-subview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "experiment-subview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DBD4A4F25A29B7D00BCABFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DBD4A5125A29B7D00BCABFC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				0DBD4A6C25A2A34E00BCABFC /* CustomView.swift */,
 				0DBD4A6F25A2A56500BCABFC /* CustomView2.xib */,
 				0DBD4A7225A2A57700BCABFC /* CustomView2.swift */,
+				0DBB2EA325A301A90061C204 /* CircleView.swift */,
 			);
 			path = "experiment-subview";
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DBB2EA425A301A90061C204 /* CircleView.swift in Sources */,
 				0DBD4A5425A29B7D00BCABFC /* ViewController.swift in Sources */,
 				0DBD4A6D25A2A34E00BCABFC /* CustomView.swift in Sources */,
 				0DBD4A5025A29B7D00BCABFC /* AppDelegate.swift in Sources */,

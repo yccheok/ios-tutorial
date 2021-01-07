@@ -11,12 +11,51 @@ class ViewController: UIViewController {
     private let CIRCLE_VIEW = "CIRCLE_VIEW"
     
     var collectionView: UICollectionView?
+    var colorPickerViewController: ColorPickerViewController?
     
     let itemContainerView = UIView()
     let kItemInterval: CGFloat = 8
     let kMarginTop: CGFloat = 20
     let kMarginSide: CGFloat = 8
     let kDefaultHeight: CGFloat = 44
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        print("ViewController viewWillTransition")
+
+        coordinator.animate(alongsideTransition: { (context) in
+            // During rotation
+        }) { (context) in
+
+            let targetBounds = self.view.bounds
+            
+            let safeAreaLeft: CGFloat
+            let safeAreaWidth: CGFloat
+            let safeAreaTop: CGFloat
+            let safeAreaBottom: CGFloat
+            if #available(iOS 11.0, *) {
+                safeAreaLeft = self.view.safeAreaInsets.left
+                safeAreaWidth = self.view.safeAreaLayoutGuide.layoutFrame.width
+                safeAreaTop = self.view.safeAreaInsets.top
+                safeAreaBottom = self.view.safeAreaInsets.bottom
+            } else {
+                safeAreaLeft = 0
+                safeAreaWidth = targetBounds.width
+                safeAreaTop = self.kMarginTop
+                safeAreaBottom = 0
+            }
+            
+            let positionX: CGFloat = safeAreaLeft
+            let positionY: CGFloat = targetBounds.minY + targetBounds.height - self.itemContainerView.frame.height - safeAreaBottom
+            
+            self.itemContainerView.frame = CGRect(
+              x: positionX,
+              y: positionY,
+              width: safeAreaWidth,
+                height: self.itemContainerView.frame.height)
+        }
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,58 +100,78 @@ class ViewController: UIViewController {
     @IBAction func buttonClick(_ sender: Any) {
         print("click")
         
+        if colorPickerViewController != nil {
+            colorPickerViewController!.willMove(toParent: nil)
+        }
+        for subview in self.itemContainerView.subviews {
+            subview.removeFromSuperview()
+        }
+        if colorPickerViewController != nil {
+            colorPickerViewController!.removeFromParent()
+            colorPickerViewController = nil
+        }
+        
         let targetBounds = self.view.bounds
         
-        let collectionViewWidth = targetBounds.width - (kMarginSide * 2)
+        let colorPickerViewController: ColorPickerViewController
         
-        let collectionView: UICollectionView
-        
-        if self.collectionView == nil {
-            self.collectionView = initCollectionView(collectionViewWidth)
-            collectionView = self.collectionView!
+        if self.colorPickerViewController == nil {
+            self.colorPickerViewController = ColorPickerViewController(nibName: "ColorPickerViewController", bundle: nil)
+            colorPickerViewController = self.colorPickerViewController!
         } else {
-            collectionView = self.collectionView!
+            colorPickerViewController = self.colorPickerViewController!
         }
 
         // Use collectionView in rest of the code
         
         var currentPosition: CGFloat = 0
         
-        let itemHeight: CGFloat = collectionView.collectionViewLayout.collectionViewContentSize.height
+        let itemHeight: CGFloat = 200
         
-        collectionView.frame = CGRect(
-            x: kMarginSide,
-            y: currentPosition,
-            width: collectionViewWidth,
-            height: itemHeight)
-        
-        for subview in self.itemContainerView.subviews {
-            subview.removeFromSuperview()
-        }
-        
+        print("self.view.bounds -> \(self.view.bounds)")
+        print("self.view.safeAreaInsets -> \(self.view.safeAreaInsets)")
+
+        //self.view.backgroundColor = UIColor.brown
+
+        let safeAreaLeft: CGFloat
+        let safeAreaWidth: CGFloat
         let safeAreaTop: CGFloat
         let safeAreaBottom: CGFloat
         if #available(iOS 11.0, *) {
+            safeAreaLeft = self.view.safeAreaInsets.left
+            safeAreaWidth = self.view.safeAreaLayoutGuide.layoutFrame.width
             safeAreaTop = self.view.safeAreaInsets.top
             safeAreaBottom = self.view.safeAreaInsets.bottom
         } else {
+            safeAreaLeft = 0
+            safeAreaWidth = targetBounds.width
             safeAreaTop = kMarginTop
             safeAreaBottom = 0
         }
 
+        let colorPickerViewControllerWidth = safeAreaWidth - (kMarginSide * 2)
+        
+        colorPickerViewController.view.frame = CGRect(
+            x: kMarginSide,
+            y: currentPosition,
+            width: colorPickerViewControllerWidth,
+            height: itemHeight)
+        
         currentPosition = currentPosition + itemHeight + kItemInterval
         
-        let positionX: CGFloat = 0
+        let positionX: CGFloat = safeAreaLeft
         let positionY: CGFloat = targetBounds.minY + targetBounds.height - currentPosition - safeAreaBottom
         
         self.itemContainerView.frame = CGRect(
           x: positionX,
           y: positionY,
-          width: targetBounds.width,
+          width: safeAreaWidth,
           height: currentPosition)
-
+        
         // It is important that we only call addSubview after initialize frame, to have proper sizing.
-        itemContainerView.addSubview(collectionView)
+        self.addChild(colorPickerViewController)
+        itemContainerView.addSubview(colorPickerViewController.view)
+        colorPickerViewController.didMove(toParent: self)
         
         self.view.addSubview(self.itemContainerView)
         

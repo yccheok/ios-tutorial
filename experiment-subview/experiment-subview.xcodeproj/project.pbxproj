@@ -18,6 +18,12 @@
 		0DBD4A6D25A2A34E00BCABFC /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBD4A6C25A2A34E00BCABFC /* CustomView.swift */; };
 		0DBD4A7025A2A56500BCABFC /* CustomView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DBD4A6F25A2A56500BCABFC /* CustomView2.xib */; };
 		0DBD4A7325A2A57700BCABFC /* CustomView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBD4A7225A2A57700BCABFC /* CustomView2.swift */; };
+		0DDBB5B325A552AF00C56D1F /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDBB5B125A552AF00C56D1F /* ColorPickerViewController.swift */; };
+		0DDBB5B425A552AF00C56D1F /* ColorPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DDBB5B225A552AF00C56D1F /* ColorPickerViewController.xib */; };
+		0DE772B325A5A00F00F76D6A /* PresetColorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DE772B225A5A00F00F76D6A /* PresetColorView.xib */; };
+		0DE772B625A5A02900F76D6A /* PresetColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE772B525A5A02900F76D6A /* PresetColorView.swift */; };
+		0DE772B925A5A08400F76D6A /* CustomColorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DE772B825A5A08400F76D6A /* CustomColorView.xib */; };
+		0DE772BC25A5A0A800F76D6A /* CustomColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE772BB25A5A0A800F76D6A /* CustomColorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +40,12 @@
 		0DBD4A6C25A2A34E00BCABFC /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		0DBD4A6F25A2A56500BCABFC /* CustomView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomView2.xib; sourceTree = "<group>"; };
 		0DBD4A7225A2A57700BCABFC /* CustomView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView2.swift; sourceTree = "<group>"; };
+		0DDBB5B125A552AF00C56D1F /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		0DDBB5B225A552AF00C56D1F /* ColorPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorPickerViewController.xib; sourceTree = "<group>"; };
+		0DE772B225A5A00F00F76D6A /* PresetColorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetColorView.xib; sourceTree = "<group>"; };
+		0DE772B525A5A02900F76D6A /* PresetColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetColorView.swift; sourceTree = "<group>"; };
+		0DE772B825A5A08400F76D6A /* CustomColorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomColorView.xib; sourceTree = "<group>"; };
+		0DE772BB25A5A0A800F76D6A /* CustomColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +90,12 @@
 				0DBD4A6F25A2A56500BCABFC /* CustomView2.xib */,
 				0DBD4A7225A2A57700BCABFC /* CustomView2.swift */,
 				0DBB2EA325A301A90061C204 /* CircleView.swift */,
+				0DDBB5B125A552AF00C56D1F /* ColorPickerViewController.swift */,
+				0DDBB5B225A552AF00C56D1F /* ColorPickerViewController.xib */,
+				0DE772B225A5A00F00F76D6A /* PresetColorView.xib */,
+				0DE772B525A5A02900F76D6A /* PresetColorView.swift */,
+				0DE772B825A5A08400F76D6A /* CustomColorView.xib */,
+				0DE772BB25A5A0A800F76D6A /* CustomColorView.swift */,
 			);
 			path = "experiment-subview";
 			sourceTree = "<group>";
@@ -139,9 +157,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DDBB5B425A552AF00C56D1F /* ColorPickerViewController.xib in Resources */,
+				0DE772B925A5A08400F76D6A /* CustomColorView.xib in Resources */,
 				0DBD4A5C25A29B7E00BCABFC /* LaunchScreen.storyboard in Resources */,
 				0DBD4A7025A2A56500BCABFC /* CustomView2.xib in Resources */,
 				0DBD4A6A25A2A30C00BCABFC /* CustomView.xib in Resources */,
+				0DE772B325A5A00F00F76D6A /* PresetColorView.xib in Resources */,
 				0DBD4A5925A29B7D00BCABFC /* Assets.xcassets in Resources */,
 				0DBD4A5725A29B7D00BCABFC /* Main.storyboard in Resources */,
 			);
@@ -156,8 +177,11 @@
 			files = (
 				0DBB2EA425A301A90061C204 /* CircleView.swift in Sources */,
 				0DBD4A5425A29B7D00BCABFC /* ViewController.swift in Sources */,
+				0DE772BC25A5A0A800F76D6A /* CustomColorView.swift in Sources */,
 				0DBD4A6D25A2A34E00BCABFC /* CustomView.swift in Sources */,
+				0DDBB5B325A552AF00C56D1F /* ColorPickerViewController.swift in Sources */,
 				0DBD4A5025A29B7D00BCABFC /* AppDelegate.swift in Sources */,
+				0DE772B625A5A02900F76D6A /* PresetColorView.swift in Sources */,
 				0DBD4A5225A29B7D00BCABFC /* SceneDelegate.swift in Sources */,
 				0DBD4A7325A2A57700BCABFC /* CustomView2.swift in Sources */,
 			);

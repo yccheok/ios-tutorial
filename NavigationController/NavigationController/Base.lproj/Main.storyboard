@@ -57,12 +57,70 @@
                                     <barButtonItem title="Item" image="alarm" catalog="system" id="5Dj-W8-cDA"/>
                                 </items>
                             </toolbar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gl7-ci-Xdt">
+                                <rect key="frame" x="0.0" y="88" width="414" height="730"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T7b-qi-MQi">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="730"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNm-3R-BlS">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEJ-ND-9rk">
+                                                        <rect key="frame" x="0.0" y="0.0" width="355" height="56"/>
+                                                        <state key="normal" title="Button 1"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHe-LL-TKp">
+                                                        <rect key="frame" x="355" y="0.0" width="59" height="56"/>
+                                                        <state key="normal" title="Button 2"/>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="Qwp-DA-qED"/>
+                                                </constraints>
+                                            </stackView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OnL-w2-wk2">
+                                                <rect key="frame" x="0.0" y="64" width="414" height="666"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                                        <constraints>
+                                            <constraint firstItem="OnL-w2-wk2" firstAttribute="top" secondItem="vNm-3R-BlS" secondAttribute="bottom" id="PVI-VG-fxh"/>
+                                            <constraint firstAttribute="bottom" secondItem="OnL-w2-wk2" secondAttribute="bottom" id="YON-NL-ClL"/>
+                                            <constraint firstAttribute="trailing" secondItem="vNm-3R-BlS" secondAttribute="trailing" id="bRK-r1-gXX"/>
+                                            <constraint firstItem="vNm-3R-BlS" firstAttribute="leading" secondItem="T7b-qi-MQi" secondAttribute="leading" id="cMZ-ke-wj7"/>
+                                            <constraint firstItem="vNm-3R-BlS" firstAttribute="top" secondItem="T7b-qi-MQi" secondAttribute="top" id="d92-9c-2Ny"/>
+                                            <constraint firstItem="OnL-w2-wk2" firstAttribute="leading" secondItem="T7b-qi-MQi" secondAttribute="leading" id="e9q-1N-wF4"/>
+                                            <constraint firstAttribute="trailing" secondItem="OnL-w2-wk2" secondAttribute="trailing" id="et2-hl-KGG"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstItem="T7b-qi-MQi" firstAttribute="top" secondItem="XZl-JW-DjP" secondAttribute="top" id="5uW-cF-3dt"/>
+                                    <constraint firstItem="T7b-qi-MQi" firstAttribute="width" secondItem="1mv-oC-nm8" secondAttribute="width" id="dTr-gT-g64"/>
+                                    <constraint firstItem="T7b-qi-MQi" firstAttribute="trailing" secondItem="XZl-JW-DjP" secondAttribute="trailing" id="gsa-cg-gfT"/>
+                                    <constraint firstItem="T7b-qi-MQi" firstAttribute="leading" secondItem="XZl-JW-DjP" secondAttribute="leading" id="wB6-VG-fDC"/>
+                                    <constraint firstItem="T7b-qi-MQi" firstAttribute="bottom" secondItem="XZl-JW-DjP" secondAttribute="bottom" id="xMY-Us-EvI"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="XZl-JW-DjP"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="1mv-oC-nm8"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1j5-WJ-Le5"/>
                         <color key="backgroundColor" systemColor="systemRedColor"/>
                         <constraints>
                             <constraint firstItem="Zo0-qi-ZND" firstAttribute="bottom" secondItem="1j5-WJ-Le5" secondAttribute="bottom" id="HCf-cf-mPT"/>
+                            <constraint firstItem="1j5-WJ-Le5" firstAttribute="trailing" secondItem="Gl7-ci-Xdt" secondAttribute="trailing" id="PdN-78-fjP"/>
+                            <constraint firstItem="Gl7-ci-Xdt" firstAttribute="bottom" secondItem="Zo0-qi-ZND" secondAttribute="top" id="Vr8-Mj-8Xs"/>
+                            <constraint firstItem="Gl7-ci-Xdt" firstAttribute="leading" secondItem="1j5-WJ-Le5" secondAttribute="leading" id="X55-fS-gYC"/>
                             <constraint firstItem="Zo0-qi-ZND" firstAttribute="leading" secondItem="1j5-WJ-Le5" secondAttribute="leading" id="ZyV-j9-gQF"/>
+                            <constraint firstItem="Gl7-ci-Xdt" firstAttribute="top" secondItem="1j5-WJ-Le5" secondAttribute="top" id="dEv-sc-5Sg"/>
                             <constraint firstItem="1j5-WJ-Le5" firstAttribute="trailing" secondItem="Zo0-qi-ZND" secondAttribute="trailing" id="zWR-yZ-ysz"/>
                         </constraints>
                     </view>
@@ -94,6 +152,15 @@
     <resources>
         <image name="alarm" catalog="system" width="124" height="128"/>
         <image name="paintpalette" catalog="system" width="128" height="105"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

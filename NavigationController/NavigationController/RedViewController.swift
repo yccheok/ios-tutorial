@@ -7,15 +7,41 @@
 
 import UIKit
 
-class RedViewController: UIViewController {
+class RedViewController: UIViewController, UITextViewDelegate {
 
     private var originalSize: CGSize?
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var customView: UIView!
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var stackView: UIStackView!
+
+    func textViewDidChange(_ textView: UITextView) {
+        //textView.sizeToFit()
+        //textViewHeight.constant = textView.contentSize.height
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         title = "Red"
+        
+        textView.delegate = self
+        
+        print("viewDidLoad scrollView \(scrollView.frame)")
+        print("viewDidLoad stackView \(stackView.frame)")
+        print("viewDidLoad textView \(textView.frame)")
+        print("viewDidLoad customView \(customView.frame)")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        print("viewDidLayoutSubviews scrollView \(scrollView.frame)")
+        print("viewDidLayoutSubviews stackView \(stackView.frame)")
+        print("viewDidLayoutSubviews textView \(textView.frame)")
+        print("viewDidLayoutSubviews customView \(customView.frame)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

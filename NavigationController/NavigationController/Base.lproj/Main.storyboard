@@ -57,41 +57,42 @@
                                     <barButtonItem title="Item" image="alarm" catalog="system" id="5Dj-W8-cDA"/>
                                 </items>
                             </toolbar>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gl7-ci-Xdt">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gl7-ci-Xdt" userLabel="Red Scroll View">
                                 <rect key="frame" x="0.0" y="88" width="414" height="730"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7b-qi-MQi" userLabel="Custom View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="730"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7b-qi-MQi" userLabel="Green Custom View">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="689.66666666666663"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNm-3R-BlS" userLabel="Horizontal Stack View">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="vNm-3R-BlS" userLabel="Top Blue Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEJ-ND-9rk">
-                                                        <rect key="frame" x="0.0" y="0.0" width="355" height="56"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEJ-ND-9rk">
+                                                        <rect key="frame" x="0.0" y="0.0" width="203.33333333333334" height="56"/>
                                                         <state key="normal" title="Button 1"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHe-LL-TKp">
-                                                        <rect key="frame" x="355" y="0.0" width="59" height="56"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHe-LL-TKp">
+                                                        <rect key="frame" x="203.33333333333337" y="0.0" width="210.66666666666663" height="56"/>
                                                         <state key="normal" title="Button 2"/>
                                                     </button>
                                                 </subviews>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="Qwp-DA-qED"/>
                                                 </constraints>
                                             </stackView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OnL-w2-wk2">
-                                                <rect key="frame" x="0.0" y="56" width="414" height="674"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OnL-w2-wk2">
+                                                <rect key="frame" x="0.0" y="56" width="414" height="617.66666666666663"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <mutableString key="text">START OF TEXT Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. END OF TEXT</mutableString>
+                                                <string key="text">START OF TEXT Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. END OF TEXT</string>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
                                         <constraints>
                                             <constraint firstItem="OnL-w2-wk2" firstAttribute="top" secondItem="vNm-3R-BlS" secondAttribute="bottom" id="PVI-VG-fxh"/>
-                                            <constraint firstAttribute="bottom" secondItem="OnL-w2-wk2" secondAttribute="bottom" id="YON-NL-ClL"/>
+                                            <constraint firstAttribute="bottom" secondItem="OnL-w2-wk2" secondAttribute="bottom" constant="16" id="YON-NL-ClL"/>
                                             <constraint firstAttribute="trailing" secondItem="vNm-3R-BlS" secondAttribute="trailing" id="bRK-r1-gXX"/>
                                             <constraint firstItem="vNm-3R-BlS" firstAttribute="leading" secondItem="T7b-qi-MQi" secondAttribute="leading" id="cMZ-ke-wj7"/>
                                             <constraint firstItem="vNm-3R-BlS" firstAttribute="top" secondItem="T7b-qi-MQi" secondAttribute="top" id="d92-9c-2Ny"/>
@@ -100,12 +101,10 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
                                 <constraints>
                                     <constraint firstItem="T7b-qi-MQi" firstAttribute="top" secondItem="XZl-JW-DjP" secondAttribute="top" id="5uW-cF-3dt"/>
-                                    <constraint firstItem="T7b-qi-MQi" firstAttribute="centerY" secondItem="1mv-oC-nm8" secondAttribute="centerY" id="VBa-M6-Qo7"/>
                                     <constraint firstItem="T7b-qi-MQi" firstAttribute="width" secondItem="1mv-oC-nm8" secondAttribute="width" id="dTr-gT-g64"/>
-                                    <constraint firstItem="T7b-qi-MQi" firstAttribute="centerX" secondItem="1mv-oC-nm8" secondAttribute="centerX" id="gId-FN-qV9"/>
                                     <constraint firstItem="T7b-qi-MQi" firstAttribute="trailing" secondItem="XZl-JW-DjP" secondAttribute="trailing" id="gsa-cg-gfT"/>
                                     <constraint firstItem="T7b-qi-MQi" firstAttribute="leading" secondItem="XZl-JW-DjP" secondAttribute="leading" id="wB6-VG-fDC"/>
                                     <constraint firstItem="T7b-qi-MQi" firstAttribute="bottom" secondItem="XZl-JW-DjP" secondAttribute="bottom" id="xMY-Us-EvI"/>
@@ -127,6 +126,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jfw-qw-kKj"/>
+                    <connections>
+                        <outlet property="customView" destination="T7b-qi-MQi" id="ygK-io-ZBc"/>
+                        <outlet property="scrollView" destination="Gl7-ci-Xdt" id="6vM-uM-bPg"/>
+                        <outlet property="stackView" destination="vNm-3R-BlS" id="E7g-4m-vwH"/>
+                        <outlet property="textView" destination="OnL-w2-wk2" id="KKA-U9-Fa8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VTy-nQ-At5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -159,6 +164,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

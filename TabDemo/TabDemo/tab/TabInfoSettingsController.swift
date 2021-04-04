@@ -25,12 +25,12 @@ func unShadow(_ view: UIView) {
 }
 
 func enlargeTransparent(_ view: UIView) {
-    view.transform = CGAffineTransform(scaleX: 1.01, y: 1.01)
+    //view.transform = CGAffineTransform(scaleX: 1.01, y: 1.01)
     view.alpha = 0.7
 }
 
 func unEnlargeTransparent(_ view: UIView) {
-    view.transform = CGAffineTransform.identity
+    //view.transform = CGAffineTransform.identity
     view.alpha = 1.0
 }
 
@@ -39,7 +39,7 @@ class ReorderCompositionalLayout : UICollectionViewCompositionalLayout {
         let attributes = super.layoutAttributesForInteractivelyMovingItem(at: indexPath as IndexPath, withTargetPosition: position)
         
         attributes.alpha = 0.7
-        attributes.transform = CGAffineTransform(scaleX: 1.01, y: 1.01)
+        //attributes.transform = CGAffineTransform(scaleX: 1.01, y: 1.01)
 
         return attributes
     }
@@ -63,6 +63,8 @@ class TabInfoSettingsController: UIViewController, TabInfoable {
     var dataSource: DataSource?
     
     var movingIndexPath: IndexPath?
+    
+    var dy: CGFloat = 0.0
     
     var viewController: ViewController? {
         if let parent = self.parent?.parent as? ViewController {
@@ -228,6 +230,8 @@ extension TabInfoSettingsController: ReorderDelegate {
             return
         }
         
+        dy = gesture.location(in: cell).y - cell.frame.height/2
+        
         self.movingIndexPath = indexPath
         
         collectionView?.beginInteractiveMovementForItem(at: indexPath)
@@ -252,6 +256,7 @@ extension TabInfoSettingsController: ReorderDelegate {
         // Lock down the x position
         // https://stackoverflow.com/questions/40116282/preventing-moving-uicollectionviewcell-by-its-center-when-dragging
         location.x = collectionView.frame.width / 2
+        location.y = location.y - dy
         
         collectionView?.updateInteractiveMovementTargetPosition(location)
     }
@@ -266,7 +271,9 @@ extension TabInfoSettingsController: ReorderDelegate {
         }
         
         self.movingIndexPath = nil
-
+        
+        dy = 0
+        
         // Cancel unwanted animation when dropping the cell.
         applySnapshot(false)
     }
@@ -282,6 +289,8 @@ extension TabInfoSettingsController: ReorderDelegate {
         
         self.movingIndexPath = nil
 
+        dy = 0
+        
         // Cancel unwanted animation when dropping the cell.
         applySnapshot(false)
     }

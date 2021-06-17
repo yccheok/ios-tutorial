@@ -38,11 +38,11 @@ class TabInfoSettingsItemCell: UICollectionViewCell {
     
     @objc func longPressGesture(gesture: UILongPressGestureRecognizer) {
         switch(gesture.state) {
-        case UIGestureRecognizerState.began:
+        case UIGestureRecognizer.State.began:
             reorderDelegate?.began(gesture)
-        case UIGestureRecognizerState.changed:
+        case UIGestureRecognizer.State.changed:
             reorderDelegate?.changed(gesture)
-        case UIGestureRecognizerState.ended:
+        case UIGestureRecognizer.State.ended:
             reorderDelegate?.end(gesture)
         default:
             reorderDelegate?.cancel(gesture)
